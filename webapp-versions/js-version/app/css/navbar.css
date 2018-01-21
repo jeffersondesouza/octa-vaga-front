@@ -1,0 +1,56 @@
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+    font-weight: 400;
+    height: 3.5em;
+    line-height: 1.5;
+    padding: 0;
+    top: 0;
+    width: 100%;
+}
+
+.navbar__header,
+.navbar__body {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.navbar-header--logo-img {
+    vertical-align: middle;
+}
+
+.navbar__header {
+    width: 9.5625em;
+}
+
+.navbar__body {
+    width: 83%;
+    text-align: right
+}
+
+.navbar__actions-buttons>li {
+    display: inline-block;
+}
+
+.navbar__actions--view-html {
+    color: rgba(0, 0, 0, .5);
+    padding: 0 1.2em;
+}
+
+.navbar__actions--view-html:hover {
+    color: rgba(0, 0, 0, .7);
+}
+
+.navbar__actions--view-html:focus {
+    outline: 0;
+}
+
+.navbar__actions--download {
+    background-color: #388EC8;
+    color: #fff;
+    height: 3.9em;
+}
+
+.navbar__actions--download:hover {
+    background-color: #47a1dd;
+}

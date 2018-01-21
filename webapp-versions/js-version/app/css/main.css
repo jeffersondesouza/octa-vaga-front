@@ -1,3 +1,42 @@
-body{
-  font-family: Lato,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif
+body {
+    font-family: Lato, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn {
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    cursor: pointer
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        width: 1170px;
+    }
 }
