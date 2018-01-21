@@ -1,0 +1,10 @@
+.dropzone {
+    display: inline-block;
+    width: 74.5%;
+    height: 1800px;
+    margin: 0;
+    height: 88vh;
+    vertical-align: top;
+    background: pink;
+    z-index: 10;
+}
