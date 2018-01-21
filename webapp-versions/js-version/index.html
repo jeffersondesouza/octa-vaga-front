@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="app/css/global.css">
   <link rel="stylesheet" href="app/css/layout.css">
   <link rel="stylesheet" href="app/css/main-area.css">
-  <link rel="stylesheet" href="app/css/main-header.css">
   <link rel="stylesheet" href="app/css/navbar.css">
   <link rel="stylesheet" href="app/css/toolbox.css">
   <link rel="stylesheet" href="app/css/form-elements.css">
@@ -49,20 +48,43 @@
         <ul>
           <li>
 
-            <div class="input-label-group">
-              <label  class="input-label-group__label" for="exampleInputEmail1">Input</label>
+            <div id="input-label" class="input-label-group draggable" draggable="true">
+              <label class="input-label-group__label" for="exampleInputEmail1">Input</label>
               <input class="form-control input-label-group__input" id="exampleInputEmail1">
             </div>
-
+            <br>
+            <div id="input-label2" class="input-label-group draggable" draggable="true">
+              <label class="input-label-group__label" for="exampleInputEmail1">Input</label>
+              <input class="form-control input-label-group__input" id="exampleInputEmail1">
+            </div>
           </li>
         </ul>
       </section>
     </aside>
-    <section class="design-area">
-      <div id="js-drop-board" class="design-area__body-block">
-        main
-      </div>
+
+
+
+    <style>
+
+
+      .dropzone {
+        display: inline-block;
+        width: 75.7%;
+        height: 1800px;
+        background: blueviolet;
+        margin: 0;
+        height: 88vh;
+        vertical-align: top;
+
+      }
+    </style>
+    <section class="dropzone">
     </section>
+
+
+
+
+
   </main>
 
   <script src="dist/bundle.js"></script>
