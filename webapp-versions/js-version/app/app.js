@@ -1,17 +1,27 @@
+
+
+import './css/reset.css';
+import './css/grid.css';
+import './css/global.css';
+import './css/layout.css';
+import './css/main-area.css';
+import './css/navbar.css';
+import './css/toolbox.css';
+import './css/form-elements.css';
+import './css/dropzone.css';
+
+
+
 let elDragPositionX;
 let elDragPositionY;
-
-var dragged;
-
+const dropZoneId = 'dropzone'
 
 
 document.addEventListener("dragstart", function (event) {
   event.dataTransfer.setData('text/plain', null)
-  // store a ref. on the dragged elem
-  dragged = event.target;
-  // make it half transparent
-
   onDragHandle(event);
+
+
 }, false);
 
 
@@ -28,8 +38,6 @@ document.addEventListener("drop", function (event) {
   event.preventDefault();
   // move dragged elem to the selected drop target
   onDropHandle(event);
-
-
 }, false);
 
 
@@ -40,8 +48,18 @@ function onDragHandle(event) {
   const data = event.dataTransfer.getData('text');
   const draggedElement = document.getElementById(data);
 
-  elDragPositionX = event.clientX - draggedElement.offsetLeft;
-  elDragPositionY = event.clientY - draggedElement.offsetTop;
+  if (event.target.parentNode.id === dropZoneId) {
+
+    elDragPositionX = event.clientX - draggedElement.offsetLeft;
+    elDragPositionY = event.clientY - draggedElement.offsetTop;
+
+  } else {
+    const dropzone = document.getElementById('dropzone');
+
+    elDragPositionX = event.clientX - draggedElement.offsetLeft + dropzone.offsetLeft;
+    elDragPositionY = event.clientY - draggedElement.offsetTop + dropzone.offsetTop;
+  }
+
 
 }
 
@@ -53,15 +71,20 @@ function onDropHandle(event) {
   const draggedElementId = event.dataTransfer.getData('text');
   const draggedElement = document.getElementById(draggedElementId);
 
-  console.log(event.target.id, draggedElementId);
+
+  event.target.style.position = 'relative'
+  draggedElement.style.position = 'absolute';
+  draggedElement.style.left = `${event.clientX - elDragPositionX}px`;
+  draggedElement.style.top = `${event.clientY - elDragPositionY}px`;
+
+
+
   if (event.target.id === 'dropzone') {
     event.target.appendChild(document.getElementById(draggedElementId));
   } else {
     document.getElementById('dropzone').appendChild(document.getElementById(draggedElementId));
   }
 
-  draggedElement.style.position = 'absolute';
 
-  draggedElement.style.left = `${event.clientX - elDragPositionX}px`;
-  draggedElement.style.top = `${event.clientY - elDragPositionY}px`;
+
 }

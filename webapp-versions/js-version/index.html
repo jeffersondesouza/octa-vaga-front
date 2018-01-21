@@ -6,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Octadesk - HTML Website Creator</title>
-  <link rel="stylesheet" href="app/css/reset.css">
-  <link rel="stylesheet" href="app/css/global.css">
-  <link rel="stylesheet" href="app/css/layout.css">
-  <link rel="stylesheet" href="app/css/main-area.css">
-  <link rel="stylesheet" href="app/css/navbar.css">
-  <link rel="stylesheet" href="app/css/toolbox.css">
-  <link rel="stylesheet" href="app/css/form-elements.css">
-  <link rel="stylesheet" href="app/css/dropzone.css">
 
-  
+  <!-- 
+    all *.css will be imported as modules in app.js, on compilation Webpack will generate styles.css 
+    this aproach is used to avoid the 'FOUC problem' -> (https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
+  -->
+  <link rel="stylesheet" href="dist/styles.css">
+
 </head>
 
 <body>
@@ -29,7 +26,7 @@
           </a>
         </figure>
       </div>
-      <div class="navbar__body">
+      <div class="navbar__body col-sm-9 col-md-10">
         <ul class="navbar__actions-buttons">
           <li>
             <button class="btn navbar__actions--view-html">View HTML Code</button>
@@ -43,21 +40,15 @@
   </header>
 
   <main class="main-area">
-    <aside class="toolbox">
+    <aside class="toolbox col-sm-3 ">
       <header class="toolbox__header">
         <h2 class="toolbox__header--title">Toolbox</h2>
       </header>
       <section class="toolbox__elements">
         <ul>
           <li>
-
             <div id="input-label" class="input-label-group draggable" draggable="true">
-              <label class="input-label-group__label" for="exampleInputEmail1">Input</label>
-              <input class="form-control input-label-group__input" id="exampleInputEmail1">
-            </div>
-            <br>
-            <div id="input-label2" class="input-label-group draggable" draggable="true">
-              <label class="input-label-group__label" for="exampleInputEmail1">Input</label>
+              <label class="input-label-group__label">Input</label>
               <input class="form-control input-label-group__input" id="exampleInputEmail1">
             </div>
           </li>

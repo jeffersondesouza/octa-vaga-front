@@ -8,8 +8,8 @@ const plugins = [];
 
 plugins.push(new extracTextWebpacPlugin('styles.css'));
 
+
 if (process.env.NODE_ENV == 'production') {
-  console.log('prod')
   plugins.push(new babiliWebpackPlugin());
 
   plugins.push(new optimizeCssAssetsWebpackPlugin({
@@ -22,6 +22,8 @@ if (process.env.NODE_ENV == 'production') {
     canPrint: true
   }))
 }
+
+
 module.exports = {
   entry: './app/app.js',
   output: {
@@ -39,11 +41,12 @@ module.exports = {
         }
       },
       {
-        test: '/\.css$/',
+        test: /\.css$/,
         use: extracTextWebpacPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader'
-        })
+        }),
+
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
