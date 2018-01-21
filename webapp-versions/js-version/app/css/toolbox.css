@@ -4,3 +4,9 @@
   height: 83vh;
   padding: 1em;
 }
+
+.toolbox__header--title{
+  line-height: 1.5;
+  font-weight: 700;
+  font-size: 1.125em;
+}

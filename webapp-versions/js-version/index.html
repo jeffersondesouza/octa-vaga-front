@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="app/css/reset.css">
   <link rel="stylesheet" href="app/css/global.css">
   <link rel="stylesheet" href="app/css/layout.css">
+  <link rel="stylesheet" href="app/css/main-area.css">
   <link rel="stylesheet" href="app/css/main-header.css">
   <link rel="stylesheet" href="app/css/navbar.css">
   <link rel="stylesheet" href="app/css/toolbox.css">
@@ -38,9 +39,11 @@
     </nav>
   </header>
 
-  <main class="main">
+  <main class="main-area">
     <aside class="toolbox">
-      <header class="toolbox__header">Toolbox</header>
+      <header class="toolbox__header">
+        <h2 class="toolbox__header--title">Toolbox</h2>
+      </header>
       <section class="toolbox__elements">
         <ul>
           <li></li>
@@ -48,7 +51,8 @@
       </section>
     </aside>
     <section class="design-area">
-      <div class="design-area__body-block">
+      <div id="js-drop-board" class="design-area__body-block">
+        main
       </div>
     </section>
   </main>
