@@ -6,6 +6,7 @@ export class DropZone {
     this.dropZoneId = dropZoneId || 'dropzone';
     this.elDragPositionX;
     this.elDragPositionY;
+    this.isCopyingElement = true;
 
     this.domManipulator = new DomManipulator();
 
@@ -21,53 +22,40 @@ export class DropZone {
     this.onDragStart();
     this.onDrop();
     this.onDragover();
-
   }
 
   onDragStart() {
-    document.addEventListener("dragstart", event => this.onDragHandle(event));
+    document.addEventListener('dragstart', event => this.onDragHandle(event));
   }
 
   onDrop() {
-    document.addEventListener("drop", event => this.onDropHandle(event));
+    document.addEventListener('drop', event => this.onDropHandle(event));
   }
 
   onDragover() {
-    document.addEventListener("dragover", event => event.preventDefault());
+    document.addEventListener('dragover', event => event.preventDefault());
   }
 
 
 
-  appendDraggedElementToDropElement(dropElement, draggedElement) {
-    this.domManipulator.appendElement(dropElement, draggedElement);
-  }
 
-  isMainDropZoneId(dropElementId, dropZoneId) {
+
+
+  isDraggingFromDropZoneArea(dropElementId, dropZoneId) {
     return dropElementId === dropZoneId;
   }
 
-  setDraggingData(event) {
-    event.dataTransfer.setData('text/plain', event.target.id);
-
-    const draggedElementId = event.dataTransfer.getData('text');
-    const draggedElement = this.domManipulator.getElementById(draggedElementId);
-
-    return {
-      draggedElementId,
-      draggedElement
-    }
-  }
 
 
   // Setting the dropped elemement Axis position, basedo on drag position and element dimensions
-  resetElementPosition(event, draggedElement) {
+  setDragElementPosition(event, draggedElement) {
     this.elDragPositionX = event.clientX - draggedElement.offsetLeft;
     this.elDragPositionY = event.clientY - draggedElement.offsetTop;
   }
 
   // Setting the dropped elemement Axis position, basedo on drag position and element dimensions
   // It is need in cases th userdrop element inside it self
-  resetElementPositionWithDropZoneDelta(event, draggedElement) {
+  setDragElementPositionWithDropZoneDelta(event, draggedElement) {
 
     this.elDragPositionX = event.clientX - draggedElement.offsetLeft + this.dropzone.offsetLeft;
     this.elDragPositionY = event.clientY - draggedElement.offsetTop + this.dropzone.offsetTop;
@@ -78,14 +66,35 @@ export class DropZone {
   onDragHandle(event) {
     const { draggedElementId, draggedElement } = this.setDraggingData(event);
 
-    if (this.isMainDropZoneId(event.target.parentNode.id, this.dropZoneId)) {
-      this.resetElementPosition(event, draggedElement);
+    if (this.isDraggingFromDropZoneArea(event.target.parentNode.id, this.dropZoneId)) {
+      this.setDragElementPosition(event, draggedElement);
+      this.isCopyingElement = false;
+
     } else {
-      this.resetElementPositionWithDropZoneDelta(event, draggedElement);
+      this.isCopyingElement = true;
+      this.setDragElementPositionWithDropZoneDelta(event, draggedElement);
     }
 
   }
 
+
+  getDraggindElement(draggedElementId) {
+    return (this.isCopyingElement)
+      ? this.domManipulator.getElementById(draggedElementId).cloneNode(true)
+      : this.domManipulator.getElementById(draggedElementId);
+  }
+
+  setDraggingData(event) {
+    event.dataTransfer.setData('text/plain', event.target.id);
+
+    const draggedElementId = event.dataTransfer.getData('text');
+    const draggedElement = this.getDraggindElement(draggedElementId);
+     
+    return {
+      draggedElementId,
+      draggedElement
+    }
+  }
 
 
   setDraggedElementPosition(draggedElement) {
@@ -99,7 +108,9 @@ export class DropZone {
   }
 
 
-
+  appendDraggedElementToDropElement(dropElement, draggedElement) {
+    this.domManipulator.appendElement(dropElement, draggedElement);
+  }
 
   onDropHandle(event) {
     // prevent default action (open as link for some elements)
@@ -110,12 +121,20 @@ export class DropZone {
     this.setDroppingElementPosition();
     this.setDraggedElementPosition(draggedElement);
 
-    if (this.isMainDropZoneId(event.target.id, this.dropZoneId)) {
-      this.appendDraggedElementToDropElement(event.target, this.domManipulator.getElementById(draggedElementId));
+    if (this.isDraggingFromDropZoneArea(event.target.id, this.dropZoneId)) {
+
+      const draggedElementClone = this.domManipulator.cloneElement(draggedElementId)
+
+      this.appendDraggedElementToDropElement(event.target,draggedElementClone);
+
+     // this.appendDraggedElementToDropElement(event.target, draggedElementClone);
+      return false;
 
     } else {
       this.appendDraggedElementToDropElement(this.dropzone, this.domManipulator.getElementById(draggedElementId));
     }
+
+  
   }
 
 

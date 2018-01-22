@@ -9,4 +9,10 @@ export class DomManipulator {
     parentElement.appendChild(childElement);
   }
 
+  cloneElement(elementId) {
+    const cloneElement = this.getElementById(elementId).cloneNode(true);
+    cloneElement.id = Math.random();
+    return cloneElement;
+  }
+
 }
