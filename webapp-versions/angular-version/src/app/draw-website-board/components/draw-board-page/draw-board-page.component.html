@@ -1,0 +1,130 @@
+<aside class="toolbox col-sm-3 ">
+  <header class="toolbox__header">
+    <h2 class="toolbox__header--title">Toolbox</h2>
+  </header>
+  <section class="toolbox__elements">
+    <ul>
+      <li>
+        <div id="input-label" data-type="input-group" class="input-label-group draggable" draggable="true">
+          <button class="item-edit-menu">X</button>
+          <label class="input-label-group__label">Input</label>
+          <input class="form-control input-label-group__input" id="input-label-group__input">
+          <div id="js-item-edit-area" class="item-edit-menu">
+            <button>edit</button>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div id="checkbox-group" data-type="checkbox-group" class="checkbox-group draggable" draggable="true">
+          <button class="item-edit-menu">X</button>
+          <h4>Checkbox</h4>
+          <label class="checkbox-group__label">
+            <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
+            <button class="item-edit-menu">X</button>
+          </label>
+
+          <label class="checkbox-group__label">
+            <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
+            <button class="item-edit-menu">X</button>
+          </label>
+          <label class="checkbox-group__label">
+            <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 3
+            <button class="item-edit-menu">X</button>
+          </label>
+
+
+          <div id="js-item-edit-area" class="item-edit-menu">
+            <button>edit</button>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <div id="button-group" data-type="button-group" class="button-group draggable" draggable="true">
+          <button class="item-edit-menu">X</button>
+          <h4>Button</h4>
+          <button id="button-group-button" class="form-control button-group__button">OK</button>
+          <div id="js-item-edit-area" class="item-edit-menu">
+            <button>edit</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section>
+
+    <!--          <div id="js-edit-element-modal" class="edit-element-modal"> -->
+    <div>
+      <header class="edit-element-modal__header">
+        <h2>Edit Design</h2>
+      </header>
+      <!-- EDIT INPUT GROUP -->
+      <div class="edit-element-modal__body">
+        <section class="edit-element-modal__input-label">
+          <h2>Label</h2>
+          <div>
+            <label>Text</label>
+            <input type="text">
+          </div>
+          <div>
+            <label>Font Size</label>
+            <input type="number">
+          </div>
+          <div>
+            <label>Font Color</label>
+            <input type="color">
+          </div>
+        </section>
+        <br>
+        <section class="edit-element-modal__input">
+          <h2>Input</h2>
+          <div class="background-color">
+            <label for="">Backgound Color</label>
+            <input id="js-background-color" type="color">
+          </div>
+          <div class="background-color">
+            <label>Font Size</label>
+            <input type="number">
+          </div>
+          <div class="background-color">
+            <label>Width</label>
+            <input type="range">
+          </div>
+          <div class="background-color">
+            <label>Height</label>
+            <input type="range">
+          </div>
+        </section>
+        <section class="edit-element-modal__input">
+          <h2>Input</h2>
+          <div class="background-color">
+            <label for="">Backgound Color</label>
+            <input id="js-background-color" type="color">
+          </div>
+          <div class="background-color">
+            <label>Font Size</label>
+            <input type="number">
+          </div>
+          <div class="background-color">
+            <label>Width</label>
+            <input type="range">
+          </div>
+          <div class="background-color">
+            <label>Height</label>
+            <input type="range">
+          </div>
+        </section>
+      </div>
+
+
+    </div>
+
+
+  </section>
+</aside>
+
+<section id="dropzone" class="dropzone">
+</section>
+
+<div id="js-edit-element-modal" class="edit-element-modal">
+</div>
