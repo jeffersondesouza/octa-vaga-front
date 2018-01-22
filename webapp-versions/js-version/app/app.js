@@ -11,6 +11,6 @@ import './css/form-elements.css';
 import './css/dropzone.css';
 
 
-const dropZone = new DropZone('dropzone');
-dropZone.init();
+const dropZone = new DropZone();
+
 
