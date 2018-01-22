@@ -38,9 +38,7 @@
       </div>
     </nav>
   </header>
-  <section id="js-edit-element-modal" class="edit-element-modal">
-    modela
-  </section>
+
   <main class="main-area">
     <aside class="toolbox col-sm-3 ">
       <header class="toolbox__header">
@@ -52,7 +50,7 @@
             <div id="input-label" class="input-label-group draggable" draggable="true">
               <button class="item-edit-menu">X</button>
               <label class="input-label-group__label">Input</label>
-              <input class="form-control input-label-group__input" id="exampleInputEmail1">
+              <input class="form-control input-label-group__input" id="input-label-group__input">
               <div id="js-item-edit-area" class="item-edit-menu">
                 <button>edit</button>
               </div>
@@ -60,10 +58,76 @@
           </li>
         </ul>
       </section>
+      <section>
+
+        <!--          <div id="js-edit-element-modal" class="edit-element-modal"> -->
+        <div>
+          <header class="edit-element-modal__header">
+            <h2>Edit Design</h2>
+          </header>
+          <!-- EDIT INPUT GROUP -->
+          <div class="input-group-editor">
+            <section class="edit-element-modal__label">
+              <h2>Label</h2>
+              <div>
+                <label>Text</label>
+                <input type="text">
+              </div>
+              <div>
+                <label>Font Size</label>
+                <input type="number">
+              </div>
+              <div>
+                <label>Font Color</label>
+                <input type="color">
+              </div>
+
+            </section>
+            <br>
+            <section class="edit-element-modal__main">
+              <h2>Input</h2>
+              <div class="background-color">
+                <label for="">Backgound Color</label>
+                <input id="js-background-color" type="color">
+              </div>
+              <div class="background-color">
+                <label>Font Size</label>
+                <input type="number">
+              </div>
+              <div class="background-color">
+                <label>Width</label>
+                <input type="range">
+              </div>
+              <div class="background-color">
+                <label>Height</label>
+                <input type="range">
+              </div>
+
+            </section>
+          </div>
+
+
+        </div>
+
+
+      </section>
     </aside>
 
     <section id="dropzone" class="dropzone">
     </section>
+
+    <div id="js-edit-element-modal" class="edit-element-modal">
+      <header class="edit-element-modal__header">Edit Design</header>
+      <section class="edit-element-modal__label">
+        label
+      </section>
+      <section class="edit-element-modal__main">
+        Input
+        <div class="background-color">
+          <input id="js-background-color" type="color">
+        </div>
+      </section>
+    </div>
   </main>
   <script src="node_modules/reflect-metadata/Reflect.js"></script>
   <script src="dist/bundle.js"></script>
