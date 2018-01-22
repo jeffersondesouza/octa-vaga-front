@@ -1,4 +1,4 @@
-import { DomManipulator, HtmlStyleManipulator } from '../../util';
+import { DomManipulator, HtmlStyleManipulator, bindEvent } from '../../util';
 
 export class DropZone {
 
@@ -10,6 +10,8 @@ export class DropZone {
 
     this.domManipulator = new DomManipulator();
     this.htmlStyleManipulator = new HtmlStyleManipulator();
+
+    this.draggnalbleElements = [];
 
     this.dragTimes = 0;
 
@@ -26,8 +28,14 @@ export class DropZone {
     this.onDrop();
     this.onDragover();
 
+    this.onClickDrop();
+  }
+
+
+  onClickDrop(event) {
 
   }
+
 
   onDragStart() {
     document.addEventListener('dragstart', event => this.onDragHandle(event));
@@ -135,6 +143,29 @@ export class DropZone {
     this.domManipulator.appendElement(dropElement, draggedElement);
   }
 
+
+  listenRemoveElementClick(removeElement, draggnalbleElementId) {
+
+    removeElement
+      .addEventListener('click', ev => {
+        ev.preventDefault();
+        const elementToRemove = this.domManipulator.getElementById(draggnalbleElementId);
+        if (elementToRemove) {
+          this.dropzone.removeChild(elementToRemove);
+        }
+      });
+  }
+
+  resetDraggnalbleElements() {
+
+    this.draggnalbleElements = [...this.dropzone.getElementsByClassName('draggable')];
+
+    this.draggnalbleElements.forEach(draggnalbleElement => {
+      this.listenRemoveElementClick(draggnalbleElement.children[0], draggnalbleElement.id);
+    });
+
+  }
+
   onDropHandle(event) {
     // prevent default action (open as link for some elements)
     event.preventDefault();
@@ -147,11 +178,13 @@ export class DropZone {
     if (this.isDraggingFromDropZoneArea(event.target.id, this.dropZoneId)) {
       this.appendDraggedElementToDropElement(event.target, draggedElement);
 
-      return false;
 
     } else {
       this.appendDraggedElementToDropElement(this.dropzone, draggedElement);
+
     }
+
+    this.resetDraggnalbleElements();
 
 
   }
