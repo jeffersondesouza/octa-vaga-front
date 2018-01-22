@@ -25,6 +25,10 @@ body {
     cursor: pointer
 }
 
+.item-edit-menu {
+    visibility: hidden;
+}
+
 @media (min-width: 768px) {
     .container {
         width: 750px;

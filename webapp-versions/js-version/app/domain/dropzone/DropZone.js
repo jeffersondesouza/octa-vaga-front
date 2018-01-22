@@ -7,6 +7,8 @@ export class DropZone {
     this.elDragPositionX;
     this.elDragPositionY;
     this.isCopyingElement = true;
+    this.selectedElement;
+
 
     this.domManipulator = new DomManipulator();
     this.htmlStyleManipulator = new HtmlStyleManipulator();
@@ -29,6 +31,42 @@ export class DropZone {
     this.onDragover();
 
     this.onClickDrop();
+
+
+    this.dropzone.addEventListener('click', (ev) => {
+
+      if (this.selectedElement) {
+
+        this.draggnalbleElements.forEach(draggnalbleElement => {
+          if (draggnalbleElement.id !== this.selectedElement.id) {
+            [...draggnalbleElement.children]
+              .filter(child => child.className === 'item-edit-menu')
+              .forEach(child => {
+                console.log(child)
+                child.style.visibility = 'hidden'
+              });
+          }
+
+          console.log(ev.target.id , ev.target.parentNode.id , this.selectedElement.id)
+          if (ev.target.id !== this.selectedElement.id && ev.target.parentNode.id !== this.selectedElement.id) {
+            [...draggnalbleElement.children]
+              .filter(child => child.className === 'item-edit-menu')
+              .forEach(child => {
+                console.log(child)
+                child.style.visibility = 'hidden'
+              });
+          }
+
+
+        });
+
+
+
+
+      }
+
+    });
+
   }
 
 
@@ -156,12 +194,22 @@ export class DropZone {
       });
   }
 
+  listenClickElement(draggnalbleElement) {
+    draggnalbleElement
+      .addEventListener('click', ev => {
+        ev.preventDefault();
+        [...draggnalbleElement.children].map(child => child.style.visibility = 'visible');
+        this.selectedElement = draggnalbleElement;
+      });
+  }
+
   resetDraggnalbleElements() {
 
     this.draggnalbleElements = [...this.dropzone.getElementsByClassName('draggable')];
 
     this.draggnalbleElements.forEach(draggnalbleElement => {
       this.listenRemoveElementClick(draggnalbleElement.children[0], draggnalbleElement.id);
+      this.listenClickElement(draggnalbleElement);
     });
 
   }
