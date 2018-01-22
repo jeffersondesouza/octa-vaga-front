@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HtmlElementWrapperComponent } from './components/html-element-wrapper/html-element-wrapper.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
+import { DraggableDirective } from './directives/draggable.directive';
 
 @NgModule({
   imports: [
@@ -11,8 +12,15 @@ import { ButtonComponent } from './components/button/button.component';
   declarations: [
     HtmlElementWrapperComponent,
     InputComponent,
-    ButtonComponent
+    ButtonComponent,
+    DraggableDirective
   ],
+  exports: [
+    HtmlElementWrapperComponent,
+    InputComponent,
+    ButtonComponent,
+    DraggableDirective
+  ]
 
 })
 export class SharedModule { }
