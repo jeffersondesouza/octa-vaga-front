@@ -26,8 +26,8 @@ export class EditDesignModal {
   listenStyleChanges(editElementModal, selectedElement) {
     
     console.log(selectedElement.getAttribute('data-type'));
-    console.log(document.getElementById(this.editElementModal.id).appendChild('as'));
-    
+
+    this.editElementModal.innerHTML = this.template();
     //input-group
     // checkbox-group
     //button group
@@ -62,7 +62,29 @@ export class EditDesignModal {
   }
 
 
-  template() {
+
+  labelTemplate(){
+    return 
+    `
+      <section class="edit-element-modal__label">
+        <h2>Label</h2>
+        <div>
+          <label>Text</label>
+          <input type="text">
+        </div>
+        <div>
+          <label>Font Size</label>
+          <input type="number">
+        </div>
+        <div>
+          <label>Font Color</label>
+          <input type="color">
+        </div>
+      </section>
+    `
+  }
+
+  template(...inputTemplate) {
     return `
     <div>
       <header class="edit-element-modal__header">
@@ -70,22 +92,7 @@ export class EditDesignModal {
       </header>
       <!-- EDIT INPUT GROUP -->
       <div class="input-group-editor">
-        <section class="edit-element-modal__label">
-          <h2>Label</h2>
-          <div>
-            <label>Text</label>
-            <input type="text">
-          </div>
-          <div>
-            <label>Font Size</label>
-            <input type="number">
-          </div>
-          <div>
-            <label>Font Color</label>
-            <input type="color">
-          </div>
 
-        </section>
         <br>
         <section class="edit-element-modal__main">
           <h2>Input</h2>
