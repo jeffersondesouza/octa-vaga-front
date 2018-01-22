@@ -15,4 +15,3 @@ import './css/edit-element-modal.css';
 
 const dropZone = new DropZone('dropzone');
 
-const editDesignModal = new EditDesignModal('');

@@ -1,4 +1,5 @@
 import { DomManipulator, HtmlStyleManipulator, bindEvent } from '../../util';
+import { EditDesignModal } from '../../domain'
 
 export class DropZone {
 
@@ -8,14 +9,14 @@ export class DropZone {
     this.elDragPositionY;
     this.isCopyingElement = true;
     this.selectedElement;
+    this.draggnalbleElements = [];
 
 
     this.domManipulator = new DomManipulator();
     this.htmlStyleManipulator = new HtmlStyleManipulator();
+    this.editDesignModal = new EditDesignModal();
 
-    this.draggnalbleElements = [];
 
-    this.dragTimes = 0;
 
     this.init();
   }
@@ -34,7 +35,8 @@ export class DropZone {
 
 
     this.dropzone.addEventListener('click', (ev) => {
-      if (this.selectedElement  && ev.target.parentNode.id !== 'js-item-edit-area') {
+      if (this.selectedElement && ev.target.parentNode.id !== 'js-item-edit-area') {
+        this.editDesignModal.hide();
 
         this.draggnalbleElements.forEach(draggnalbleElement => {
 
@@ -43,13 +45,13 @@ export class DropZone {
 
 
           if (
-            ev.target.id !== this.selectedElement.id 
+            ev.target.id !== this.selectedElement.id
             && ev.target.parentNode.id !== this.selectedElement.id
-           
+
             || draggnalbleElement.id !== this.selectedElement.id
           ) {
 
-              [...draggnalbleElement.children]
+            [...draggnalbleElement.children]
               .filter(child => child.className === 'item-edit-menu')
               .forEach(child => {
                 child.style.visibility = 'hidden'
@@ -59,9 +61,8 @@ export class DropZone {
 
         });
 
-
-
-
+      } else {
+        this.editDesignModal.show(this.selectedElement);
       }
 
     });
