@@ -1,0 +1,19 @@
+.dropzone {
+  display: inline-block;
+  height: 88vh;
+  margin: 0;
+  vertical-align: top;
+  width: 69.66%;
+}
+
+@media(min-width:1024px) {
+  .dropzone {
+      width: 71%;
+  }
+}
+
+@media (min-width:1280px) {
+  .dropzone {
+      width: 72%;
+  }
+}
