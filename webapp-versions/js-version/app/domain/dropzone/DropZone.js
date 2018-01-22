@@ -47,7 +47,7 @@ export class DropZone {
               });
           }
 
-          console.log(ev.target.id , ev.target.parentNode.id , this.selectedElement.id)
+          console.log(ev.target.id, ev.target.parentNode.id, this.selectedElement.id)
           if (ev.target.id !== this.selectedElement.id && ev.target.parentNode.id !== this.selectedElement.id) {
             [...draggnalbleElement.children]
               .filter(child => child.className === 'item-edit-menu')
@@ -229,8 +229,10 @@ export class DropZone {
 
     } else {
       this.appendDraggedElementToDropElement(this.dropzone, draggedElement);
-
     }
+
+    this.selectedElement = draggedElement;
+    [...draggedElement.children].map(child => child.style.visibility = 'visible');
 
     this.resetDraggnalbleElements();
 
