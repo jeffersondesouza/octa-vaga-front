@@ -36,19 +36,12 @@ export class DropZone {
     document.addEventListener('dragover', event => event.preventDefault());
   }
 
-
-
-
-
-
   isDraggingFromDropZoneArea(dropElementId, dropZoneId) {
     return dropElementId === dropZoneId;
   }
 
-
-
   // Setting the dropped elemement Axis position, basedo on drag position and element dimensions
-  setDragElementPosition(event, draggedElement) {
+  setDraggginPositionValues(event, draggedElement) {
     this.elDragPositionX = event.clientX - draggedElement.offsetLeft;
     this.elDragPositionY = event.clientY - draggedElement.offsetTop;
   }
@@ -67,7 +60,7 @@ export class DropZone {
     const { draggedElementId, draggedElement } = this.setDraggingData(event);
 
     if (this.isDraggingFromDropZoneArea(event.target.parentNode.id, this.dropZoneId)) {
-      this.setDragElementPosition(event, draggedElement);
+      this.setDraggginPositionValues(event, draggedElement);
       this.isCopyingElement = false;
 
     } else {
@@ -80,7 +73,7 @@ export class DropZone {
 
   getDraggindElement(draggedElementId) {
     return (this.isCopyingElement)
-      ? this.domManipulator.getElementById(draggedElementId).cloneNode(true)
+      ? this.domManipulator.cloneElement(draggedElementId)
       : this.domManipulator.getElementById(draggedElementId);
   }
 
@@ -89,7 +82,7 @@ export class DropZone {
 
     const draggedElementId = event.dataTransfer.getData('text');
     const draggedElement = this.getDraggindElement(draggedElementId);
-     
+
     return {
       draggedElementId,
       draggedElement
@@ -97,10 +90,17 @@ export class DropZone {
   }
 
 
-  setDraggedElementPosition(draggedElement) {
+  setDraggedElementPosition(event, draggedElement) {
     draggedElement.style.position = 'absolute';
-    draggedElement.style.left = `${event.clientX - this.elDragPositionX}px`;
-    draggedElement.style.top = `${event.clientY - this.elDragPositionY}px`;
+    if (this.isCopyingElement) {
+      draggedElement.style.left = `${event.clientX - this.elDragPositionX}px`;
+      draggedElement.style.top = `${event.clientY-this.dropzone.offsetTop}px`;
+
+    } else {
+      draggedElement.style.left = `${event.clientX - this.elDragPositionX}px`;
+      draggedElement.style.top = `${event.clientY - this.elDragPositionY}px`;
+
+    }
   }
 
   setDroppingElementPosition() {
@@ -119,22 +119,22 @@ export class DropZone {
     const { draggedElementId, draggedElement } = this.setDraggingData(event);
 
     this.setDroppingElementPosition();
-    this.setDraggedElementPosition(draggedElement);
+    this.setDraggedElementPosition(event, draggedElement);
 
     if (this.isDraggingFromDropZoneArea(event.target.id, this.dropZoneId)) {
 
-      const draggedElementClone = this.domManipulator.cloneElement(draggedElementId)
+      // const draggedElementClone = this.domManipulator.cloneElement(draggedElementId)
 
-      this.appendDraggedElementToDropElement(event.target,draggedElementClone);
+      this.appendDraggedElementToDropElement(event.target, draggedElement);
 
-     // this.appendDraggedElementToDropElement(event.target, draggedElementClone);
+      // this.appendDraggedElementToDropElement(event.target, draggedElementClone);
       return false;
 
     } else {
       this.appendDraggedElementToDropElement(this.dropzone, this.domManipulator.getElementById(draggedElementId));
     }
 
-  
+
   }
 
 
