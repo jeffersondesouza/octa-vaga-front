@@ -62,7 +62,7 @@ export class DropZone {
         });
 
       } else {
-        this.editDesignModal.show(this.selectedElement);
+        this.editDesignModal.toogle(this.selectedElement);
       }
 
     });

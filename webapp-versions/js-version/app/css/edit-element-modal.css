@@ -8,4 +8,5 @@
     border-radius: 0.3em;
     box-shadow: 0.1em 0.2em 0.8em rgba(0, 0, 0, 0.2);
     visibility: hidden;
+    z-index: 1000;
 }
