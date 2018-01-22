@@ -1,4 +1,4 @@
-import { DomManipulator } from '../../util';
+import { DomManipulator, HtmlStyleManipulator } from '../../util';
 
 export class DropZone {
 
@@ -9,6 +9,7 @@ export class DropZone {
     this.isCopyingElement = true;
 
     this.domManipulator = new DomManipulator();
+    this.htmlStyleManipulator = new HtmlStyleManipulator();
 
     this.dragTimes = 0;
 
@@ -111,19 +112,18 @@ export class DropZone {
 
 
   setDraggedElementPosition(event, draggedElement) {
-    draggedElement.style.position = 'absolute';
-
-    this.dragTimes++;
-
-    if (this.isCopyingElement) {
-      draggedElement.style.left = `${event.clientX - this.elDragPositionX}px`;
-      draggedElement.style.top = `${event.clientY - this.dropzone.offsetTop}px`;
-
-    } else {
-      draggedElement.style.left = `${event.clientX - this.elDragPositionX}px`;
-      draggedElement.style.top = `${event.clientY - this.elDragPositionY}px`;
+    const elAxisPositions = {
+      axisX: this.elDragPositionX,
+      axisY: this.elDragPositionY
     }
 
+    this.htmlStyleManipulator.setElementPosition(
+      event,
+      draggedElement,
+      this.dropzone,
+      elAxisPositions,
+      this.isCopyingElement
+    );
   }
 
   setDroppingElementPosition() {
