@@ -8,6 +8,7 @@ import { DropzoneComponent } from './components/dropzone/dropzone.component';
 import { SharedModule } from './shared';
 import { ToolboxHeaderComponent } from './components/toolbox/toolbox-header/toolbox-header.component';
 import { ToolboxElementsComponent } from './components/toolbox/toolbox-elements/toolbox-elements.component';
+import { DragService } from './shared';
 
 @NgModule({
   imports: [
@@ -21,6 +22,9 @@ import { ToolboxElementsComponent } from './components/toolbox/toolbox-elements/
     DropzoneComponent,
     ToolboxHeaderComponent,
     ToolboxElementsComponent,
+  ],
+  providers: [
+    DragService,
   ]
 })
 export class DrawWebsiteBoardModule { }

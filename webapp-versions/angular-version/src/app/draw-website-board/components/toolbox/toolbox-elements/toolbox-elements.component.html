@@ -1,7 +1,8 @@
 <section class="toolbox__elements">
   <ul>
     <li>
-      <div id="input-label" data-type="input-group" class="input-label-group draggable" appDraggable>
+      <div id="input-label" data-type="input-group" class="input-label-group draggable" 
+        [appDraggable]="{zone:'dropzone', data:'d1'}">
         <button class="item-edit-menu">X</button>
         <label class="input-label-group__label">Input</label>
         <input class="form-control input-label-group__input" id="input-label-group__input">
@@ -11,7 +12,7 @@
       </div>
     </li>
     <li>
-      <div id="checkbox-group" data-type="checkbox-group" class="checkbox-group draggable" appDraggable>
+      <div id="checkbox-group" data-type="checkbox-group" class="checkbox-group draggable" [appDraggable]="{data:'d2'}">
         <button class="item-edit-menu">X</button>
         <h4>Checkbox</h4>
         <label class="checkbox-group__label">

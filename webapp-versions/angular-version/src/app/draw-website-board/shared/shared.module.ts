@@ -4,6 +4,7 @@ import { HtmlElementWrapperComponent } from './components/html-element-wrapper/h
 import { InputComponent } from './components/input/input.component';
 import { ButtonComponent } from './components/button/button.component';
 import { DraggableDirective } from './directives/draggable.directive';
+import { DropTargetDirective } from './directives/drop-target.directive';
 
 @NgModule({
   imports: [
@@ -13,13 +14,15 @@ import { DraggableDirective } from './directives/draggable.directive';
     HtmlElementWrapperComponent,
     InputComponent,
     ButtonComponent,
-    DraggableDirective
+    DraggableDirective,
+    DropTargetDirective,
   ],
   exports: [
     HtmlElementWrapperComponent,
     InputComponent,
     ButtonComponent,
-    DraggableDirective
+    DraggableDirective,
+    DropTargetDirective,
   ]
 
 })
