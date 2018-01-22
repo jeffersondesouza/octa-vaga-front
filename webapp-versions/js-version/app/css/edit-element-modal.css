@@ -1,0 +1,10 @@
+.edit-element-modal {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 15em;
+    height: 20em;
+    overflow-y: scroll;
+    border-radius: 0.3em;
+    box-shadow: 0.1em 0.2em 0.8em rgba(0, 0, 0, 0.2);
+}
