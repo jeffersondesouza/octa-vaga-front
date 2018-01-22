@@ -22,17 +22,11 @@ export class EditDesignModal {
   }
 
   listenStyleChanges(editElementModal, selectedElement) {
+    console.log(selectedElement.getAttribute('data-type'))
+    //input-group
+    // checkbox-group
+    //button group
 
-      console.log(selectedElement.className.includes('input-label-group'));
-    
-
-
-    new DomManipulator().getElementById('js-background-color')
-      .addEventListener('input', (ev) => {
-        const color = ev.target.value;
-        
-        
-      });
   }
 
   show(selectedElement) {
