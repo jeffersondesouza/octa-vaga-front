@@ -34,25 +34,24 @@ export class DropZone {
 
 
     this.dropzone.addEventListener('click', (ev) => {
-
-      if (this.selectedElement) {
+      if (this.selectedElement  && ev.target.parentNode.id !== 'js-item-edit-area') {
 
         this.draggnalbleElements.forEach(draggnalbleElement => {
-          if (draggnalbleElement.id !== this.selectedElement.id) {
-            [...draggnalbleElement.children]
-              .filter(child => child.className === 'item-edit-menu')
-              .forEach(child => {
-                console.log(child)
-                child.style.visibility = 'hidden'
-              });
-          }
 
-          console.log(ev.target.id, ev.target.parentNode.id, this.selectedElement.id)
-          if (ev.target.id !== this.selectedElement.id && ev.target.parentNode.id !== this.selectedElement.id) {
-            [...draggnalbleElement.children]
+          console.log(this.selectedElement.id)
+          console.log(ev.target.parentNode.id)
+
+
+          if (
+            ev.target.id !== this.selectedElement.id 
+            && ev.target.parentNode.id !== this.selectedElement.id
+           
+            || draggnalbleElement.id !== this.selectedElement.id
+          ) {
+
+              [...draggnalbleElement.children]
               .filter(child => child.className === 'item-edit-menu')
               .forEach(child => {
-                console.log(child)
                 child.style.visibility = 'hidden'
               });
           }
