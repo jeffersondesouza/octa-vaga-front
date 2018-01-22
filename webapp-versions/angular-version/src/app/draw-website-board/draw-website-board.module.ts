@@ -5,12 +5,22 @@ import { DrawBoardPageComponent } from './components/draw-board-page/draw-board-
 import { DrawWebsiteBoardRoutingModule } from './draw-website-board.routing';
 import { ToolboxComponent } from './components/toolbox/toolbox.component';
 import { DropzoneComponent } from './components/dropzone/dropzone.component';
+import { SharedModule } from './shared';
+import { ToolboxHeaderComponent } from './components/toolbox/toolbox-header/toolbox-header.component';
+import { ToolboxElementsComponent } from './components/toolbox/toolbox-elements/toolbox-elements.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    DrawWebsiteBoardRoutingModule
+    DrawWebsiteBoardRoutingModule,
+    SharedModule,
   ],
-  declarations: [DrawBoardPageComponent, ToolboxComponent, DropzoneComponent]
+  declarations: [
+    DrawBoardPageComponent,
+    ToolboxComponent,
+    DropzoneComponent,
+    ToolboxHeaderComponent,
+    ToolboxElementsComponent,
+  ]
 })
 export class DrawWebsiteBoardModule { }
