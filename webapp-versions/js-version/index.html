@@ -101,8 +101,8 @@
             <h2>Edit Design</h2>
           </header>
           <!-- EDIT INPUT GROUP -->
-          <div class="input-group-editor">
-            <section class="edit-element-modal__label">
+          <div class="edit-element-modal__body">
+            <section class="edit-element-modal__input-label">
               <h2>Label</h2>
               <div>
                 <label>Text</label>
@@ -116,10 +116,9 @@
                 <label>Font Color</label>
                 <input type="color">
               </div>
-
             </section>
             <br>
-            <section class="edit-element-modal__main">
+            <section class="edit-element-modal__input">
               <h2>Input</h2>
               <div class="background-color">
                 <label for="">Backgound Color</label>
@@ -137,7 +136,25 @@
                 <label>Height</label>
                 <input type="range">
               </div>
-
+            </section>
+            <section class="edit-element-modal__input">
+              <h2>Input</h2>
+              <div class="background-color">
+                <label for="">Backgound Color</label>
+                <input id="js-background-color" type="color">
+              </div>
+              <div class="background-color">
+                <label>Font Size</label>
+                <input type="number">
+              </div>
+              <div class="background-color">
+                <label>Width</label>
+                <input type="range">
+              </div>
+              <div class="background-color">
+                <label>Height</label>
+                <input type="range">
+              </div>
             </section>
           </div>
 
@@ -153,15 +170,6 @@
 
     <div id="js-edit-element-modal" class="edit-element-modal">
       <header class="edit-element-modal__header">Edit Design</header>
-      <section class="edit-element-modal__label">
-        label
-      </section>
-      <section class="edit-element-modal__main">
-        Input
-        <div class="background-color">
-          <input id="js-background-color" type="color">
-        </div>
-      </section>
     </div>
   </main>
   <script src="node_modules/reflect-metadata/Reflect.js"></script>

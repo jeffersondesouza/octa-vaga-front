@@ -31,18 +31,11 @@ export class DropZone {
     this.onDrop();
     this.onDragover();
 
-    this.onClickDrop();
-
-
     this.dropzone.addEventListener('click', (ev) => {
       if (this.selectedElement && ev.target.parentNode.id !== 'js-item-edit-area') {
         this.editDesignModal.hide();
 
         this.draggnalbleElements.forEach(draggnalbleElement => {
-
-          console.log(this.selectedElement.id)
-          console.log(ev.target.parentNode.id)
-
 
           if (
             ev.target.id !== this.selectedElement.id
@@ -70,9 +63,6 @@ export class DropZone {
   }
 
 
-  onClickDrop(event) {
-
-  }
 
 
   onDragStart() {
