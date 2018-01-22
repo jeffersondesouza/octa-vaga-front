@@ -10,6 +10,8 @@ export class DropZone {
 
     this.domManipulator = new DomManipulator();
 
+    this.dragTimes = 0;
+
     this.init();
   }
 
@@ -22,6 +24,8 @@ export class DropZone {
     this.onDragStart();
     this.onDrop();
     this.onDragover();
+
+
   }
 
   onDragStart() {
@@ -40,7 +44,7 @@ export class DropZone {
     return dropElementId === dropZoneId;
   }
 
-  // Setting the dropped elemement Axis position, basedo on drag position and element dimensions
+  // Setting the dragging elemement Axis position, basedo on drag position and element dimensions
   setDraggginPositionValues(event, draggedElement) {
     this.elDragPositionX = event.clientX - draggedElement.offsetLeft;
     this.elDragPositionY = event.clientY - draggedElement.offsetTop;
@@ -48,7 +52,7 @@ export class DropZone {
 
   // Setting the dropped elemement Axis position, basedo on drag position and element dimensions
   // It is need in cases th userdrop element inside it self
-  setDragElementPositionWithDropZoneDelta(event, draggedElement) {
+  setDragPositionConsideringDropZoneOffsets(event, draggedElement) {
 
     this.elDragPositionX = event.clientX - draggedElement.offsetLeft + this.dropzone.offsetLeft;
     this.elDragPositionY = event.clientY - draggedElement.offsetTop + this.dropzone.offsetTop;
@@ -57,31 +61,47 @@ export class DropZone {
 
 
   onDragHandle(event) {
-    const { draggedElementId, draggedElement } = this.setDraggingData(event);
+    const { draggedElementId, draggedElement } = this.setDraggingDataOnDrag(event);
 
     if (this.isDraggingFromDropZoneArea(event.target.parentNode.id, this.dropZoneId)) {
-      this.setDraggginPositionValues(event, draggedElement);
       this.isCopyingElement = false;
-
+      this.setDraggginPositionValues(event, draggedElement);
     } else {
       this.isCopyingElement = true;
-      this.setDragElementPositionWithDropZoneDelta(event, draggedElement);
+      this.setDragPositionConsideringDropZoneOffsets(event, draggedElement);
     }
 
   }
 
 
-  getDraggindElement(draggedElementId) {
-    return (this.isCopyingElement)
-      ? this.domManipulator.cloneElement(draggedElementId)
-      : this.domManipulator.getElementById(draggedElementId);
-  }
 
-  setDraggingData(event) {
+  setDraggingDataOnDrag(event) {
     event.dataTransfer.setData('text/plain', event.target.id);
 
     const draggedElementId = event.dataTransfer.getData('text');
-    const draggedElement = this.getDraggindElement(draggedElementId);
+    const draggedElement = this.domManipulator.getElementById(draggedElementId);
+
+    return {
+      draggedElementId,
+      draggedElement
+    }
+  }
+
+
+  getDraggindElementOnDrop(draggedElementId) {
+
+    const draggedElement = (this.isCopyingElement)
+      ? this.domManipulator.cloneElement(draggedElementId)
+      : this.domManipulator.getElementById(draggedElementId);
+
+    return draggedElement;
+  }
+
+  setDraggingDataOnDrop(event) {
+    event.dataTransfer.setData('text/plain', event.target.id);
+
+    const draggedElementId = event.dataTransfer.getData('text');
+    const draggedElement = this.getDraggindElementOnDrop(draggedElementId);
 
     return {
       draggedElementId,
@@ -92,15 +112,18 @@ export class DropZone {
 
   setDraggedElementPosition(event, draggedElement) {
     draggedElement.style.position = 'absolute';
+
+    this.dragTimes++;
+
     if (this.isCopyingElement) {
       draggedElement.style.left = `${event.clientX - this.elDragPositionX}px`;
-      draggedElement.style.top = `${event.clientY-this.dropzone.offsetTop}px`;
+      draggedElement.style.top = `${event.clientY - this.dropzone.offsetTop}px`;
 
     } else {
       draggedElement.style.left = `${event.clientX - this.elDragPositionX}px`;
       draggedElement.style.top = `${event.clientY - this.elDragPositionY}px`;
-
     }
+
   }
 
   setDroppingElementPosition() {
@@ -116,22 +139,18 @@ export class DropZone {
     // prevent default action (open as link for some elements)
     event.preventDefault();
 
-    const { draggedElementId, draggedElement } = this.setDraggingData(event);
+    const { draggedElementId, draggedElement } = this.setDraggingDataOnDrop(event);
 
     this.setDroppingElementPosition();
     this.setDraggedElementPosition(event, draggedElement);
 
     if (this.isDraggingFromDropZoneArea(event.target.id, this.dropZoneId)) {
-
-      // const draggedElementClone = this.domManipulator.cloneElement(draggedElementId)
-
       this.appendDraggedElementToDropElement(event.target, draggedElement);
 
-      // this.appendDraggedElementToDropElement(event.target, draggedElementClone);
       return false;
 
     } else {
-      this.appendDraggedElementToDropElement(this.dropzone, this.domManipulator.getElementById(draggedElementId));
+      this.appendDraggedElementToDropElement(this.dropzone, draggedElement);
     }
 
 
