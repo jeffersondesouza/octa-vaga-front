@@ -1,3 +1,4 @@
+import { ShowEditElementMenuStatusService } from './../../services/show-edit-element-menu-status.service';
 import { Component, OnInit } from '@angular/core';
 import { PageElement } from '../../index';
 
@@ -11,13 +12,15 @@ export class CheckboxGroupComponent implements OnInit, PageElement {
 
   showEditMenu = false;
 
-  constructor() { }
+  constructor(
+    private showEditMenuStatusService: ShowEditElementMenuStatusService
+  ) { }
 
   ngOnInit() {
   }
 
   onClick(event) {
-    this.showEditMenu = !this.showEditMenu;
+    this.showEditMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showEditMenu);
   }
 
 }

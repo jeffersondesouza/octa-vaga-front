@@ -1,4 +1,4 @@
-<div id="button" [appDraggable]="{zone:'dropzone', draggdedElementId:'button'}" data-type="button-group" class="button-group draggable">
+<div (click)="onClick($event)"  id="button" [appDraggable]="{zone:'dropzone', draggdedElementId:'button'}" data-type="button-group" class="button-group draggable">
   <button class="item-edit-menu">X</button>
   <h4>Button</h4>
   <button id="button-group-button" class="form-control button-group__button">OK</button>

@@ -1,4 +1,5 @@
-<div id="checkbox" [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}" data-type="checkbox-group" class="checkbox-group draggable">
+<div (click)="onClick($event)" 
+  id="checkbox" [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}" data-type="checkbox-group" class="checkbox-group draggable">
   <h4>Checkbox</h4>
   <label class="checkbox-group__label">
     <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
