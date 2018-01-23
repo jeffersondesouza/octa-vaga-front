@@ -12,7 +12,7 @@ import { NavbarComponent } from './index';
   ],
   declarations: [
     NavbarComponent,
-    LogoComponent
+    LogoComponent,
   ],
   providers: [
     DragService,

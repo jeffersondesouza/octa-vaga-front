@@ -1,3 +1,4 @@
+import { CodeModalComponent } from './components/code-modal/code-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -20,13 +21,16 @@ import { FormsModule } from '@angular/forms';
     PageElementEditMenuComponent,
     CheckboxGroupComponent,
     ButtonEditModalComponent,
+    CodeModalComponent,
+
   ],
   exports: [
     InputComponent,
     ButtonComponent,
     DraggableDirective,
     DropTargetDirective,
-    CheckboxGroupComponent
+    CheckboxGroupComponent,
+    CodeModalComponent,
   ]
 
 })

@@ -10,7 +10,7 @@ import { Codeblock } from 'ng2-prism/codeblock';
 export class CodeModalComponent implements OnInit {
 
   private showModal = false;
-
+  private code;
 
   constructor() { }
 
@@ -21,7 +21,8 @@ export class CodeModalComponent implements OnInit {
     this.showModal = false;
   }
 
-  show() {
+  show(code) {
+    this.code = code;
     this.showModal = true;
   }
 

@@ -10,7 +10,6 @@ import { ToolboxHeaderComponent } from './components/toolbox/toolbox-header/tool
 import { ToolboxElementsComponent } from './components/toolbox/toolbox-elements/toolbox-elements.component';
 import { DragService } from './shared';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CodeModalComponent } from './components/code-modal/code-modal.component';
 
 @NgModule({
   imports: [
@@ -25,7 +24,6 @@ import { CodeModalComponent } from './components/code-modal/code-modal.component
     DropzoneComponent,
     ToolboxHeaderComponent,
     ToolboxElementsComponent,
-    CodeModalComponent,
   ],
 
 })
