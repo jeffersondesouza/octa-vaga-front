@@ -23,6 +23,15 @@
 .edit-element-modal {
     min-width: 11em;
     background-color: #fff;
-    padding: 1em;
+    padding: 0.1em 1em;
     border-radius: 0.5em;
+    &__action {
+        text-align: right;
+        &__button--close {
+            border: none;
+            font-size: 1.6em;
+            color: #666;
+            padding: 0;
+        }
+    }
 }

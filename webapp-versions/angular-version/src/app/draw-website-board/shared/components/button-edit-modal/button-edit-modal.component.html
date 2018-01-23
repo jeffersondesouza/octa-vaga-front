@@ -1,5 +1,10 @@
 <div class="edit-element-modal">
   <section class="edit-element-modal__main">
+    <section class="edit-element-modal__action">
+      <button (click)="onClose()" class="btn btn-default edit-element-modal__action__button--close">
+        <i class="icon">&#10006;</i>
+      </button>
+    </section>
     <div class="input-label-group">
       <label class="input-label-group__label">Button Text</label>
       <input class="input-label-group__input" type="text" [(ngModel)]="label">
@@ -25,7 +30,5 @@
       <input class="input-label-group__input" type="range" [(ngModel)]="height">
     </div>
   </section>
-  <section class="edit-element-modal__action">
-    <button (click)="onClose()" class="btn btn-default">Close</button>
-  </section>
+
 </div>
