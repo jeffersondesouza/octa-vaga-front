@@ -15,7 +15,7 @@ export class DropZoneService {
   public elementsPage = {
     'input-label': this.inputLabels,
     'checkbox': this.checkbox,
-    'buttons': this.buttons,
+    'button': this.buttons,
     'titles': this.titles,
   };
 
@@ -23,7 +23,6 @@ export class DropZoneService {
   constructor() { }
 
   emitCreateNewElement(value: any) {
-    console.log(value.elementId);
     this.createNewElement.next({ elementId: value.elementId });
     this.elementsPage[value.elementId].push(1);
   }

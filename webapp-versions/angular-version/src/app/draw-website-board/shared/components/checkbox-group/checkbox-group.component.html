@@ -1,0 +1,18 @@
+<div id="checkbox" [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}" data-type="checkbox-group" class="checkbox-group draggable">
+  <h4>Checkbox</h4>
+  <label class="checkbox-group__label">
+    <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
+    <button class="item-edit-menu">X</button>
+  </label>
+  <label class="checkbox-group__label">
+    <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
+    <button class="item-edit-menu">X</button>
+  </label>
+  <label class="checkbox-group__label">
+    <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 3
+    <button class="item-edit-menu">X</button>
+  </label>
+
+  <app-page-element-edit-menu *ngIf="showEditMenu" [deleteButtonPosition]="{'top':'-73px','left':'150px'}"></app-page-element-edit-menu>
+
+</div>

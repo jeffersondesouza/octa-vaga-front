@@ -12,8 +12,6 @@ import { DropZoneService } from './../../../shared/services/drop-zone.service';
 export class ToolboxElementsComponent implements OnInit, OnDestroy {
 
 
-  private inputs = [1];
-
 
 
   private dropZoneServiceSub: Subscription;
@@ -26,9 +24,7 @@ export class ToolboxElementsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dropZoneServiceSub = this.dropZoneService.createNewElement$
-      .subscribe(elementId => {
-        this.inputs = this.dropZoneService.elementsPage['input-label'];
-      });
+      .subscribe(elementId => { });
   }
 
 

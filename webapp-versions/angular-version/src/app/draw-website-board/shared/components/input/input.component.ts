@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { DraggableOptions } from '../../index';
+import { DraggableOptions, PageElement } from '../../index';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
-export class InputComponent implements OnInit {
+export class InputComponent implements OnInit, PageElement {
 
-  private showEditMenu = false;
+  showEditMenu = false;
+
   private draggableOptions: DraggableOptions;
 
   constructor() { }
@@ -18,7 +19,7 @@ export class InputComponent implements OnInit {
   }
 
   onClick(event) {
-    console.log(event);
+    this.showEditMenu = !this.showEditMenu;
   }
 
 }

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PageElement } from '../../index';
 
 @Component({
-  selector: 'app-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  selector: 'app-checkbox-group',
+  templateUrl: './checkbox-group.component.html',
+  styleUrls: ['./checkbox-group.component.scss']
 })
-export class ButtonComponent implements OnInit, PageElement {
+export class CheckboxGroupComponent implements OnInit, PageElement {
 
 
   showEditMenu = false;

@@ -1,44 +1,13 @@
 <section class="toolbox__elements">
-
   <ul>
-
     <li>
-      <app-input *ngFor="let input of inputs"></app-input>
+      <app-input *ngFor="let input of this.dropZoneService.elementsPage['input-label']"></app-input>
     </li>
     <li>
-      <div id="checkbox-group" data-type="checkbox-group" class="checkbox-group draggable" [appDraggable]="{data:'d2'}">
-        <button class="item-edit-menu">X</button>
-        <h4>Checkbox</h4>
-        <label class="checkbox-group__label">
-          <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
-          <button class="item-edit-menu">X</button>
-        </label>
-
-        <label class="checkbox-group__label">
-          <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
-          <button class="item-edit-menu">X</button>
-        </label>
-        <label class="checkbox-group__label">
-          <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 3
-          <button class="item-edit-menu">X</button>
-        </label>
-
-
-        <div id="js-item-edit-area" class="item-edit-menu">
-          <button>edit</button>
-        </div>
-      </div>
+      <app-checkbox-group *ngFor="let input of this.dropZoneService.elementsPage['checkbox']"></app-checkbox-group>
     </li>
-
     <li>
-      <div id="button-group" data-type="button-group" class="button-group draggable" draggable="true">
-        <button class="item-edit-menu">X</button>
-        <h4>Button</h4>
-        <button id="button-group-button" class="form-control button-group__button">OK</button>
-        <div id="js-item-edit-area" class="item-edit-menu">
-          <button>edit</button>
-        </div>
-      </div>
+      <app-button *ngFor="let input of this.dropZoneService.elementsPage['button']"></app-button>
     </li>
   </ul>
 </section>
