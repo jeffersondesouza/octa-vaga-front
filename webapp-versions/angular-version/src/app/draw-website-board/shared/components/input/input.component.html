@@ -1,3 +1,8 @@
-  <p id="app-input"  draggable="true" [appDraggable]="{zone:'dropzone', draggdedElementId:'app-input'}">
-    input works!
-  </p>
+<div  id="input-label" [appDraggable]="{zone:'dropzone', draggdedElementId:'input-label'}" class="input-label-group draggable">
+  <button class="item-edit-menu">X</button>
+  <label class="input-label-group__label">Input</label>
+  <input class="form-control input-label-group__input" id="input-label-group__input">
+  <div id="js-item-edit-area" class="item-edit-menu">
+    <button>edit</button>
+  </div>
+</div>
