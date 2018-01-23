@@ -1,3 +1,35 @@
-<p>
-  button-edit-modal works!
-</p>
+<div class="edit-element-modal">
+  <section class="edit-element-modal__main">
+    <div>
+      <label>Text</label>
+      <input type="text" [(ngModel)]="label">
+    </div>
+    <div class="font-size">
+      <label>Font Size</label>
+      <input type="number" [(ngModel)]="fontSize" min="10">
+    </div>
+    <div class="backgound-color">
+      <label>Background</label>
+      <input type="color" [(ngModel)]="bgColor">
+    </div>
+    <div class="foreground-color">
+      <label>Color</label>
+      <input type="color" [(ngModel)]="fgColor">
+    </div>
+    <div class="width">
+      <label>Width</label>
+      <input type="range" [(ngModel)]="width">
+    </div>
+    <div class="height">
+      <label>Height</label>
+      <input type="range" [(ngModel)]="height">
+    </div>
+
+
+  </section>
+  <section class="edit-element-modal__action">
+    <button (click)="onClose()">Close</button>
+  </section>
+</div>
+
+

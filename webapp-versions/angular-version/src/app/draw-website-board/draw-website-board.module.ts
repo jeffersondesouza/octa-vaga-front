@@ -9,12 +9,14 @@ import { SharedModule } from './shared';
 import { ToolboxHeaderComponent } from './components/toolbox/toolbox-header/toolbox-header.component';
 import { ToolboxElementsComponent } from './components/toolbox/toolbox-elements/toolbox-elements.component';
 import { DragService } from './shared';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     DrawWebsiteBoardRoutingModule,
     SharedModule,
+    FormsModule,
   ],
   declarations: [
     DrawBoardPageComponent,

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { PageElement } from '../../index';
 import { ShowEditElementMenuStatusService } from './../../services/show-edit-element-menu-status.service';
+import { ButtonEditModalComponent } from '../button-edit-modal/button-edit-modal.component';
 
 @Component({
   selector: 'app-button',
@@ -13,6 +14,12 @@ export class ButtonComponent implements OnInit, PageElement {
 
   showOptionsMenu = false;
   showEditMenu = false;
+  label = 'OK';
+  fontSize = 16;
+  bgColor;
+  fgColor;
+  width;
+  height;
 
   constructor(
     private showEditMenuStatusService: ShowEditElementMenuStatusService
@@ -28,5 +35,7 @@ export class ButtonComponent implements OnInit, PageElement {
   onEditMenuOpen(event) {
     this.showEditMenu = true;
   }
+
+
 
 }
