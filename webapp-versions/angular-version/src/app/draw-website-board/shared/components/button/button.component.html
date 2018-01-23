@@ -1,22 +1,26 @@
-<div #buttonElment (click)="onClick($event)"  id="button" [appDraggable]="{zone:'dropzone', draggdedElementId:'button'}" data-type="button-group" class="button-group draggable">
-  <button id="button-group-button" 
-    class="form-control button-group__button"
+<div (click)="onClick($event)" id="button" 
+  [appDraggable]="{zone:'dropzone', draggdedElementId:'button'}" 
+  class="button-group draggable"
+  [draggable]="!showEditMenu"
+  >
+  <button id="button-group-button"  
+    class="form-control button-group__button btn btn--primary "
     [style.fontSize]="fontSize+'px'"
     [style.backgroundColor]="bgColor"
     [style.color]="fgColor"
     [style.width]="width+'px'"
-    [style.height]="height+'px'"
-
-
-    >{{label}}</button>
+    [style.height]="height+'px'">{{label}}</button>
+  
   <app-page-element-edit-menu 
-    [showOptionsMenu]="showOptionsMenu"  
+    [showOptionsMenu]="showOptionsMenu && !showEditMenu"  
     [deleteButtonPosition]="{'top':'-73px','left':'150px'}"
-    [parent]="buttonElment"
     (editMenuOpen)="onEditMenuOpen($event)">
   </app-page-element-edit-menu>
  
-  <app-button-edit-modal 
+  <app-button-edit-modal
+    *ngIf="showEditMenu"
+    (hide)="onHideEditModal()"
+    [showModalMenu]="showEditMenu" 
     [(label)]="label"
     [(fontSize)]="fontSize"
     [(bgColor)]="bgColor"
@@ -25,14 +29,6 @@
     [(height)]="height">
   </app-button-edit-modal>
 </div>
-
-
-{{label}}
-{{fontSize}}
-{{bgColor}}
-{{fgColor}}
-{{width}}
-{{height}}
 
 
 

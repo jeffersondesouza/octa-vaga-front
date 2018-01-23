@@ -23,7 +23,6 @@ export class PageElementEditMenuComponent implements OnInit {
   }
 
   onEdit(event) {
-
     this.editMenuOpen.next(true);
   }
 

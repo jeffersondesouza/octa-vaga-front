@@ -9,6 +9,7 @@ export class ButtonEditModalComponent implements OnInit {
 
 
 
+  @Output() hide = new EventEmitter<boolean>();
   @Output() labelChange = new EventEmitter<string>();
   @Output() fontSizeChange = new EventEmitter<number>();
   @Output() bgColorChange = new EventEmitter<string>();
@@ -18,7 +19,8 @@ export class ButtonEditModalComponent implements OnInit {
 
 
 
-  @Input() showModalMenu;
+
+  @Input() showModalMenu = false;
 
   @Input() set label(value) {
     this.labelChange.emit(value);
@@ -50,6 +52,7 @@ export class ButtonEditModalComponent implements OnInit {
     private renderer: Renderer2
   ) { }
 
+
   ngOnInit() {
     this.listenClicksOnPageToToogleVisibility();
   }
@@ -61,7 +64,7 @@ export class ButtonEditModalComponent implements OnInit {
   }
 
   onClose() {
-    this.showModalMenu = false;
+    this.hide.next(true);
   }
 
   show() {

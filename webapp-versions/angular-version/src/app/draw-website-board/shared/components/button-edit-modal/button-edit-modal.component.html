@@ -1,35 +1,31 @@
 <div class="edit-element-modal">
   <section class="edit-element-modal__main">
-    <div>
-      <label>Text</label>
-      <input type="text" [(ngModel)]="label">
+    <div class="input-label-group">
+      <label class="input-label-group__label">Button Text</label>
+      <input class="input-label-group__input" type="text" [(ngModel)]="label">
     </div>
-    <div class="font-size">
+    <div class="font-size input-label-group">
       <label>Font Size</label>
-      <input type="number" [(ngModel)]="fontSize" min="10">
+      <input class="input-label-group__input" type="number" [(ngModel)]="fontSize" min="10">
     </div>
-    <div class="backgound-color">
-      <label>Background</label>
-      <input type="color" [(ngModel)]="bgColor">
+    <div class="backgound-color input-label-group">
+      <label class="input-label-group__label">Background</label>
+      <input class="input-label-group__input" type="color" [(ngModel)]="bgColor">
     </div>
-    <div class="foreground-color">
-      <label>Color</label>
-      <input type="color" [(ngModel)]="fgColor">
+    <div class="foreground-color input-label-group">
+      <label class="input-label-group__label">Color</label>
+      <input class="input-label-group__input" type="color" [(ngModel)]="fgColor">
     </div>
-    <div class="width">
-      <label>Width</label>
-      <input type="range" [(ngModel)]="width">
+    <div class="width input-label-group">
+      <label class="input-label-group__label">Width</label>
+      <input class="input-label-group__input" type="range" [(ngModel)]="width">
     </div>
-    <div class="height">
-      <label>Height</label>
-      <input type="range" [(ngModel)]="height">
+    <div class="height input-label-group">
+      <label class="input-label-group__label">Height</label>
+      <input class="input-label-group__input" type="range" [(ngModel)]="height">
     </div>
-
-
   </section>
   <section class="edit-element-modal__action">
-    <button (click)="onClose()">Close</button>
+    <button (click)="onClose()" class="btn btn-default">Close</button>
   </section>
 </div>
-
-

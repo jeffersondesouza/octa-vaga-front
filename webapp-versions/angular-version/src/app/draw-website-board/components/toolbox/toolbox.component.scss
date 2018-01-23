@@ -1,5 +1,6 @@
+@import '../../../../assets/styles/colors.scss';
 .toolbox {
-  background-color: #eee;
+  background-color: $toolbox-color;
   height: 83vh;
   padding: 1em;
   position: 'relative';

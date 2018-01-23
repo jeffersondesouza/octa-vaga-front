@@ -32,10 +32,13 @@ export class ButtonComponent implements OnInit, PageElement {
     this.showOptionsMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showOptionsMenu);
   }
 
-  onEditMenuOpen(event) {
-    this.showEditMenu = true;
+  onEditMenuOpen(openMenu) {
+    this.showEditMenu = openMenu;
   }
 
+  onHideEditModal() {
+    this.showEditMenu = false;
+  }
 
 
 }

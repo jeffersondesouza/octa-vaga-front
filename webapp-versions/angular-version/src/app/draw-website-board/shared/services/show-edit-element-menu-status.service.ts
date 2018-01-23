@@ -13,6 +13,9 @@ export class ShowEditElementMenuStatusService {
 
 
   checkIfInDropzoneArea(parentElement: any, showEditMenu: boolean) {
+    if (!parentElement) {
+      return false;
+    }
     if (this.isParentElementDropzoneArea(parentElement.id)) {
       return !showEditMenu;
     } else if (this.isParentElementBody(parentElement.localName)) {
