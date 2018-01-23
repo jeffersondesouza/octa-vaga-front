@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
 import { DragService, DropZoneService } from './../../shared';
+import { HtmlGeneratorService } from './../../../core/services/html-generator.service';
 
 @Component({
   selector: 'app-dropzone',
@@ -17,7 +18,8 @@ export class DropzoneComponent {
     private dragService: DragService,
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private dropZoneService: DropZoneService
+    private dropZoneService: DropZoneService,
+    private htmlGeneratorService: HtmlGeneratorService
   ) { }
 
 
@@ -37,15 +39,14 @@ export class DropzoneComponent {
   }
 
   onDragEnd(event) {
-    console.log(this.positionX, this.positionY);
     this.draggedElement = event.target;
-
     this.move(this.draggedElement, Math.abs(this.positionX), Math.abs(this.positionY));
   }
 
   onDrop(event) {
     this.positionX -= event.target.offsetLeft;
     this.positionY -= event.target.offsetTop;
+    this.savegeneratedHtmlCode();
   }
 
   ondragover(event) {
@@ -56,6 +57,10 @@ export class DropzoneComponent {
     if (!x || !y) { return; }
     this.renderer.setStyle(elment, 'top', `${y}px`);
     this.renderer.setStyle(elment, 'left', `${x}px`);
+  }
+
+  savegeneratedHtmlCode() {
+    this.htmlGeneratorService.emmitHtmlCodeChanges(document.getElementById('dropzone').outerHTML);
   }
 
 
