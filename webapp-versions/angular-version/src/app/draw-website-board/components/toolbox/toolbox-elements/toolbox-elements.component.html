@@ -3,8 +3,7 @@
   <ul>
 
     <li>
-      <app-input></app-input>
-
+      <app-input *ngFor="let input of inputs"></app-input>
     </li>
     <li>
       <div id="checkbox-group" data-type="checkbox-group" class="checkbox-group draggable" [appDraggable]="{data:'d2'}">

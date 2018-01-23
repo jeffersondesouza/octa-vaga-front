@@ -1,15 +1,15 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
-import { DragService } from './../../shared';
+import { Component, OnInit, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
+import { DragService, DropZoneService } from './../../shared';
 
 @Component({
   selector: 'app-dropzone',
   templateUrl: './dropzone.component.html',
   styleUrls: ['./dropzone.component.scss']
 })
-export class DropzoneComponent implements OnInit {
+export class DropzoneComponent {
+
 
   private draggedElement;
-
   private positionX = 0;
   private positionY = 0;
 
@@ -17,11 +17,11 @@ export class DropzoneComponent implements OnInit {
     private dragService: DragService,
     private elementRef: ElementRef,
     private renderer: Renderer2,
+    private dropZoneService: DropZoneService
   ) { }
 
 
-  ngOnInit() {
-  }
+
   onDragStart(event) {
 
   }
@@ -57,5 +57,6 @@ export class DropzoneComponent implements OnInit {
     this.renderer.setStyle(elment, 'top', `${y}px`);
     this.renderer.setStyle(elment, 'left', `${x}px`);
   }
+
 
 }

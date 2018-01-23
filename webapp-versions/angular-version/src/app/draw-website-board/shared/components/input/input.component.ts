@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DraggableOptions } from '../../index';
 
 @Component({
   selector: 'app-input',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
+  private showEditMenu = false;
+  private draggableOptions: DraggableOptions;
+
   constructor() { }
 
   ngOnInit() {
+    this.draggableOptions = { zone: 'dropzone', draggdedElementId: 'input-label' };
   }
 
-  onDrag(event) {
+  onClick(event) {
     console.log(event);
   }
 
