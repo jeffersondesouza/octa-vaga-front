@@ -1,6 +1,45 @@
+@import '../../../../../assets/styles/colors.scss';
 .page-element-edit-menu {
     position: relative;
-    &__delete {
-      position: absolute;
+    &__top {}
+    ;
+    &__button {
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 0.1em 0.1em 0.5em rgba(0, 0, 0, 0.5);
+        color: $icons-color;
+        height: 2.3em;
+        text-align: center;
+        width: 2.3em;
+        .icon {
+          font-size: 1.2em;
+        }
+        &--delete {
+          position: absolute;
+          .icon {
+            color: $red;
+            font-size: 1.4em;
+          }
+        }
+        &--code {
+          position: relative;
+          .icon{
+            position: absolute;
+            top: 8px;
+            left: 1px;
+
+          }
+
+        }
     }
+    ;
+    &__bottoms {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 0.5em;
+    }
+    &__bottoms &__button{
+      margin-right: 1em;
+  }
 }

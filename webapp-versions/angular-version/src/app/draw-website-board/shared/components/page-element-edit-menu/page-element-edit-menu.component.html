@@ -1,10 +1,16 @@
-<div *ngIf="showOptionsMenu" class="page-element-edit-menu">
+<div *ngIf="!showOptionsMenu" class="page-element-edit-menu">
   <section class="page-element-edit-menu__top">
-    <button class="page-element-edit-menu__delete" [ngStyle]="deleteButtonPosition">&#10060;</button>
+    <button class="btn page-element-edit-menu__button--delete" [ngStyle]="deleteButtonPosition">
+      <i class="icon icon-cancel-circled"></i>
+    </button>
   </section>
-  <section class="page-element-edit-menu__bottom">
-    <button (click)="onEdit($event)" id="edit">Edit</button>
-    <button>Show Code</button>
+  <section class="page-element-edit-menu__bottoms">
+    <button class="btn page-element-edit-menu__button page-element-edit-menu__button--edit" (click)="onEdit($event)" id="edit">
+      <i class="icon icon-pencil"></i>
+    </button>
+    <button class="btn page-element-edit-menu__button page-element-edit-menu__button--code">
+      <i class="icon icon-code"></i>
+    </button>
   </section>
 
 </div>
