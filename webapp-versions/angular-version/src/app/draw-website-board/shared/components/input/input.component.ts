@@ -10,6 +10,15 @@ import { DraggableOptions, PageElement } from '../../index';
 export class InputComponent implements OnInit, PageElement {
 
   showEditMenu = false;
+  showOptionsMenu;
+
+
+  label = 'OK';
+  fontSize = 16;
+  bgColor;
+  fgColor;
+  width;
+  height;
 
   private draggableOptions: DraggableOptions;
 
@@ -23,8 +32,19 @@ export class InputComponent implements OnInit, PageElement {
   }
 
   onClick(event) {
-    this.showEditMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showEditMenu);
+    this.showOptionsMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showOptionsMenu);
+
   }
+
+  onEditMenuOpen(openMenu) {
+    this.showEditMenu = openMenu;
+  }
+
+  onHideEditModal() {
+
+    this.showEditMenu = false;
+  }
+
 
 
 }

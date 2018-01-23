@@ -15,7 +15,7 @@ export class DrawBoardPageComponent implements OnInit, OnDestroy {
 
   htmlGenerated;
 
-  @ViewChild(CodeModalComponent) codeModalComponent: CodeModalComponent = new CodeModalComponent();
+  @ViewChild(CodeModalComponent) codeModalComponent: CodeModalComponent;
 
 
   private htmlGeneratorServiceSub: Subscription;
@@ -36,7 +36,6 @@ export class DrawBoardPageComponent implements OnInit, OnDestroy {
 
     this.notifyShowCodeModalSub = this.htmlGeneratorService.notifyShowCodeModal$
       .subscribe(htmlGenerated => {
-        console.log(this.codeModalComponent)
        this.codeModalComponent.show(this.htmlGenerated);
       });
 

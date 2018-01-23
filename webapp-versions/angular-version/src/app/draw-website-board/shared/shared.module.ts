@@ -7,6 +7,7 @@ import { DropTargetDirective } from './directives/drop-target.directive';
 import { ButtonComponent, InputComponent, CheckboxGroupComponent, PageElementEditMenuComponent } from './index.js';
 import { ButtonEditModalComponent } from './components/button-edit-modal/button-edit-modal.component';
 import { FormsModule } from '@angular/forms';
+import { InputEditModalComponent } from './components/input-edit-modal/input-edit-modal.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     CheckboxGroupComponent,
     ButtonEditModalComponent,
     CodeModalComponent,
+    InputEditModalComponent,
 
   ],
   exports: [

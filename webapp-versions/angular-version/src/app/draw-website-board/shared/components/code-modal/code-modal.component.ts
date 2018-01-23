@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Codeblock } from 'ng2-prism/codeblock';
 
 @Component({
   selector: 'app-code-modal',
@@ -22,8 +21,13 @@ export class CodeModalComponent implements OnInit {
   }
 
   show(code) {
-    this.code = code;
+    this.parseToHtml(code);
+
     this.showModal = true;
+  }
+
+  parseToHtml(code) {
+    this.code = code;
   }
 
 }

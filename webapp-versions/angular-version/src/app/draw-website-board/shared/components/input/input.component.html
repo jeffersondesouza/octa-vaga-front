@@ -2,6 +2,22 @@
   <label class="input-label-group__label">Input</label>
   <input class="form-control input-label-group__input" id="input-label-group__input">
 
-  <app-page-element-edit-menu *ngIf="showEditMenu" [deleteButtonPosition]="{'top':'-73px','left':'150px'}">
+
+  <app-page-element-edit-menu 
+    [showOptionsMenu]="showOptionsMenu && !showEditMenu"  
+    [deleteButtonPosition]="{'top':'-60px','left':'40px'}"
+    (editMenuOpen)="onEditMenuOpen($event)">
   </app-page-element-edit-menu>
+
+  <app-input-edit-modal
+    *ngIf="showEditMenu"
+    (hide)="onHideEditModal()"
+    [showModalMenu]="showEditMenu" 
+    [(label)]="label"
+    [(fontSize)]="fontSize"
+    [(bgColor)]="bgColor"
+    [(fgColor)]="fgColor"
+    [(width)]="width"
+    [(height)]="height">
+  ></app-input-edit-modal> 
 </div>
