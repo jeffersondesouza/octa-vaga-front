@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-page-element-edit-menu',
@@ -8,10 +8,40 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PageElementEditMenuComponent implements OnInit {
 
   @Input() deleteButtonPosition: { top: number, left: number };
+  @Input() showOptionsMenu = false;
+  @Input() parent;
 
-  constructor() { }
+  @Output() editMenuOpen: EventEmitter<boolean> = new EventEmitter();
+
+  constructor(
+    private renderer: Renderer2
+  ) { }
+
 
   ngOnInit() {
+    this.listenClicksOnPageToToogleVisibility();
+  }
+
+  onEdit(event) {
+
+    this.editMenuOpen.next(true);
+  }
+
+  // It was nedd to close edit menu options element when click outside the main component
+  listenClicksOnPageToToogleVisibility(): void {
+    this.renderer.listen('document', 'click', event => {
+
+      if (event.target.id === 'dropzone') {
+        this.showOptionsMenu = false;
+      }
+
+      /* if (event.target['id'] === this.triggerFilterCriteriasId) {
+        this.toogleHideCriterias();
+      } else {
+        this.isHidingCriterias = true;
+      }
+       */
+    });
   }
 
 

@@ -11,6 +11,7 @@ import { ShowEditElementMenuStatusService } from './../../services/show-edit-ele
 export class ButtonComponent implements OnInit, PageElement {
 
 
+  showOptionsMenu = false;
   showEditMenu = false;
 
   constructor(
@@ -21,7 +22,11 @@ export class ButtonComponent implements OnInit, PageElement {
   }
 
   onClick(event) {
-    this.showEditMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showEditMenu);
+    this.showOptionsMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showOptionsMenu);
+  }
+
+  onEditMenuOpen(event) {
+    this.showEditMenu = true;
   }
 
 }
