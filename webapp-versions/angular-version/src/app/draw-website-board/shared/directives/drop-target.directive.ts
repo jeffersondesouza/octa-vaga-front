@@ -42,18 +42,26 @@ export class DropTargetDirective {
     console.log(event.dataTransfer.getData('Text'));
 
     if (event.dataTransfer.getData('Text')) {
+
       const draggdedElementId = JSON.parse(event.dataTransfer.getData('Text'));
       const draggedElement: HTMLElement = <HTMLElement>document.getElementById(draggdedElementId).cloneNode(true);
 
+      this.renderer.setStyle(this.elementRef.nativeElement, 'position', 'relative');
       this.renderer.setAttribute(draggedElement, 'id', `${Math.random()}`);
       this.renderer.setStyle(draggedElement, 'position', 'absolute');
-      this.renderer.setStyle(this.elementRef.nativeElement, 'position', 'relative');
+      console.log(event.clientX);
+
+      const positionX = this.elementRef.nativeElement.offsetLeft - event.clientX - draggedElement.offsetWidth;
+      const positionY = this.elementRef.nativeElement.offsettop - event.clientY - draggedElement.offsetHeight;
+
+      this.renderer.setStyle(draggedElement, 'left', `${Math.abs(positionX)}px`);
+      this.renderer.setStyle(draggedElement, 'top', `${Math.abs(positionY)}px`);
 
 
       this.renderer.appendChild(this.elementRef.nativeElement, draggedElement);
 
-    } else {
     }
+
   }
 
 

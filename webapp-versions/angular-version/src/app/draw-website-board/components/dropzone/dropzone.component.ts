@@ -32,7 +32,6 @@ export class DropzoneComponent implements OnInit {
 
 
   onDrag(event) {
-    console.log(event.taget);
     this.positionX = event.clientX;
     this.positionY = event.clientY;
   }
@@ -40,13 +39,13 @@ export class DropzoneComponent implements OnInit {
   onDragEnd(event) {
     console.log(this.positionX, this.positionY);
     this.draggedElement = event.target;
+
+    this.move(this.draggedElement, Math.abs(this.positionX), Math.abs(this.positionY));
   }
 
   onDrop(event) {
     this.positionX -= event.target.offsetLeft;
     this.positionY -= event.target.offsetTop;
-
-    this.move(this.draggedElement, Math.abs(this.positionX), Math.abs(this.positionY));
   }
 
   ondragover(event) {
