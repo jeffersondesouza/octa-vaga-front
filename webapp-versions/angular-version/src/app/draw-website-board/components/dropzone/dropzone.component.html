@@ -1,2 +1,8 @@
-<section id="dropzone" class="dropzone" [appDropTarget]="{zone:'dropzone', data:'d1'}">
+<section id="dropzone" class="dropzone" [appDropTarget]="{zone:'dropzone', draggdedElementId:'d1'}"
+(dragstart)="onDragStart($event)"
+(dragend)="onDragEnd($event)"
+(dragover)="ondragover($event)"
+(drag)="onDrag($event)"
+(drop)="onDrop($event)"
+>
 </section>

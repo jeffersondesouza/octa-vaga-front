@@ -2,5 +2,5 @@
 
 export interface DraggableOptions {
   zone?: string;
-  data?: any;
+  draggdedElementId?: any;
 }

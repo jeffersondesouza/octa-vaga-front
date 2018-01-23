@@ -23,8 +23,6 @@ import { DragService } from './shared';
     ToolboxHeaderComponent,
     ToolboxElementsComponent,
   ],
-  providers: [
-    DragService,
-  ]
+
 })
 export class DrawWebsiteBoardModule { }
