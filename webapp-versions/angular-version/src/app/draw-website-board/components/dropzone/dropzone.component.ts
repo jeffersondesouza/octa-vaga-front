@@ -41,12 +41,14 @@ export class DropzoneComponent {
   onDragEnd(event) {
     this.draggedElement = event.target;
     this.move(this.draggedElement, Math.abs(this.positionX), Math.abs(this.positionY));
+    this.saveGeneratedHtmlCode();
   }
 
   onDrop(event) {
-    this.positionX -= event.target.offsetLeft;
-    this.positionY -= event.target.offsetTop;
-    this.savegeneratedHtmlCode();
+    const dropzoneElement = document.getElementById('dropzone');
+    this.positionX -= dropzoneElement.offsetLeft;
+    this.positionY -= dropzoneElement.offsetTop;
+    this.saveGeneratedHtmlCode();
   }
 
   ondragover(event) {
@@ -59,7 +61,7 @@ export class DropzoneComponent {
     this.renderer.setStyle(elment, 'left', `${x}px`);
   }
 
-  savegeneratedHtmlCode() {
+  saveGeneratedHtmlCode() {
     this.htmlGeneratorService.emmitHtmlCodeChanges(document.getElementById('dropzone').outerHTML);
   }
 

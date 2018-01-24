@@ -1,4 +1,4 @@
-<div (click)="onClick($event)" id="text" 
+<div *ngIf="elementsLives" (click)="onClick($event)" id="text" 
   [appDraggable]="{zone:'dropzone', draggdedElementId:'text'}"
    class="input-label-group draggable">
     <p class="input-label-group__label"
@@ -11,7 +11,8 @@
     <app-page-element-edit-menu 
       [showOptionsMenu]="showOptionsMenu && !showEditMenu"  
       [deleteButtonPosition]="{'top':'-72px','left':'120px'}"
-      (editMenuOpen)="onEditMenuOpen($event)">
+      (editMenuOpen)="onEditMenuOpen($event)"
+      (elementDestroyed)="onElementDestroyed()">
     </app-page-element-edit-menu>
   
     <app-page-element-editor
