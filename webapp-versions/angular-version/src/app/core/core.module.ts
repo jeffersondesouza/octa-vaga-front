@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { LogoComponent } from './components/logo/logo.component';
+import { FileGeneratorService } from './../draw-website-board/shared/services/file-generator.service';
+import { HtmlGeneratorService } from './../draw-website-board/shared/services/html-generator.service';
 import { DropZoneService, DragService, ShowEditElementMenuStatusService } from '../draw-website-board/shared/index';
-import { HtmlGeneratorService } from './services/html-generator.service';
 import { NavbarComponent } from './index';
-import { FileGeneratorService } from './services/file-generator.service';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { FileGeneratorService } from './services/file-generator.service';
     DropZoneService,
     ShowEditElementMenuStatusService,
     HtmlGeneratorService,
-    FileGeneratorService
+    FileGeneratorService,
   ],
   exports: [
     NavbarComponent

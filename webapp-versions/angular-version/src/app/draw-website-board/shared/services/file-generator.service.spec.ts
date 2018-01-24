@@ -1,6 +1,6 @@
+import { FileGeneratorService } from './file-generator.service';
 import { TestBed, inject } from '@angular/core/testing';
 
-import { FileGeneratorService } from './file-generator.service';
 
 describe('FileGeneratorService', () => {
   beforeEach(() => {

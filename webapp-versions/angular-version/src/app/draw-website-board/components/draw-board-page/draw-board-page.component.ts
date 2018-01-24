@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 import { Subscription } from 'rxjs/Subscription';
 
-import { HtmlGeneratorService } from './../../../core/services/html-generator.service';
 import { CodeModalComponent } from '../../shared/components/code-modal/code-modal.component';
+import { HtmlGeneratorService } from './../../shared/services/html-generator.service';
 
 @Component({
   selector: 'app-draw-board-page',
@@ -22,7 +22,7 @@ export class DrawBoardPageComponent implements OnInit, OnDestroy {
   private notifyShowCodeModalSub: Subscription;
 
   constructor(
-    private htmlGeneratorService: HtmlGeneratorService
+    private htmlGeneratorService: HtmlGeneratorService,
   ) { }
 
   ngOnInit() {

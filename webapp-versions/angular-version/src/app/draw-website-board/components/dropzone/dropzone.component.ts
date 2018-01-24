@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
+
 import { DragService, DropZoneService } from './../../shared';
-import { HtmlGeneratorService } from './../../../core/services/html-generator.service';
+import { HtmlGeneratorService } from './../../shared/services/html-generator.service';
 
 @Component({
   selector: 'app-dropzone',
@@ -19,7 +20,7 @@ export class DropzoneComponent {
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private dropZoneService: DropZoneService,
-    private htmlGeneratorService: HtmlGeneratorService
+    private htmlGeneratorService: HtmlGeneratorService,
   ) { }
 
   onDragStart(event) {

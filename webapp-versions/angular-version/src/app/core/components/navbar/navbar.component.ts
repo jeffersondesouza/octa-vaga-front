@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { HtmlGeneratorService } from './../../services/html-generator.service';
 import { CodeModalComponent } from '../../../draw-website-board/shared/components/code-modal/code-modal.component';
+import { HtmlGeneratorService } from '../../../draw-website-board/shared/services/html-generator.service';
 
 @Component({
   selector: 'app-navbar',
