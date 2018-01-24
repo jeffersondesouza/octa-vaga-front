@@ -8,6 +8,7 @@ import { ButtonComponent, InputComponent, CheckboxGroupComponent, PageElementEdi
 import { FormsModule } from '@angular/forms';
 import { PageElementEditorComponent } from './components/page-element-editor/page-element-editor.component';
 import { CheckboxItemComponent } from './components/checkbox-group/checkbox-item/checkbox-item.component';
+import { TextComponent } from './components/text/text.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { CheckboxItemComponent } from './components/checkbox-group/checkbox-item
     CodeModalComponent,
     PageElementEditorComponent,
     CheckboxItemComponent,
-
+    TextComponent,
   ],
   exports: [
     InputComponent,
@@ -33,6 +34,7 @@ import { CheckboxItemComponent } from './components/checkbox-group/checkbox-item
     DropTargetDirective,
     CheckboxGroupComponent,
     CodeModalComponent,
+    TextComponent,
   ]
 
 })

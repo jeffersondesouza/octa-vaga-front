@@ -11,12 +11,14 @@ export class DropZoneService {
   private checkbox = [1];
   private buttons = [1];
   private titles = [1];
+  private texts = [1];
 
   public elementsPage = {
     'input-label': this.inputLabels,
     'checkbox': this.checkbox,
     'button': this.buttons,
     'titles': this.titles,
+    'text': this.texts,
   };
 
 

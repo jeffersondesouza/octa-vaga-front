@@ -1,0 +1,28 @@
+<div (click)="onClick($event)" id="text" 
+  [appDraggable]="{zone:'dropzone', draggdedElementId:'text'}"
+   class="input-label-group draggable">
+    <p class="input-label-group__label"
+      [style.fontSize]="fontSize+'px'"
+      [style.backgroundColor]="bgColor"
+      [style.color]="fgColor"
+      [style.width]="width+'px'"
+      [style.height]="height+'px'">{{label}}</p>
+ 
+    <app-page-element-edit-menu 
+      [showOptionsMenu]="showOptionsMenu && !showEditMenu"  
+      [deleteButtonPosition]="{'top':'-72px','left':'120px'}"
+      (editMenuOpen)="onEditMenuOpen($event)">
+    </app-page-element-edit-menu>
+  
+    <app-page-element-editor
+      *ngIf="showEditMenu"
+      (hide)="onHideEditModal()"
+      [showModalMenu]="showEditMenu" 
+      [(label)]="label"
+      [(fontSize)]="fontSize"
+      [(bgColor)]="bgColor"
+      [(fgColor)]="fgColor"
+      [(width)]="width"
+      [(height)]="height">
+    </app-page-element-editor>
+  </div>

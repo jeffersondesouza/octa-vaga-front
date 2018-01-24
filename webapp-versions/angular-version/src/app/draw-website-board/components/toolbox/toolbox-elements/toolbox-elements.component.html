@@ -1,6 +1,9 @@
 <section class="toolbox__elements">
   <ul class="toolbox__elements__list">
     <li class="toolbox__elements__list__item">
+      <app-text *ngFor="let input of this.dropZoneService.elementsPage['text']"></app-text>
+    </li>
+    <li class="toolbox__elements__list__item">
       <app-input *ngFor="let input of this.dropZoneService.elementsPage['input-label']"></app-input>
     </li>
     <li class="toolbox__elements__list__item">
