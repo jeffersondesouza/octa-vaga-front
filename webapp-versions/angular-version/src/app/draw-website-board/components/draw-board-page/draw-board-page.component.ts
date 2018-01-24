@@ -28,12 +28,20 @@ export class DrawBoardPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.observeCodeGeneratedChanges();
     this.observeViewCodeGeneratedRequisitions();
+    this.observeDownloadHtmlGeneratedChanges();
   }
 
   observeCodeGeneratedChanges() {
     this.htmlGeneratorServiceSub = this.htmlGeneratorService.htmlCodeChanges$
       .subscribe(htmlGenerated => {
         this.htmlGenerated = htmlGenerated;
+      });
+  }
+
+  observeDownloadHtmlGeneratedChanges() {
+    this.htmlGeneratorServiceSub = this.htmlGeneratorService.notifyDownloadGeneratedHtml$
+      .subscribe(htmlGenerated => {
+        this.htmlGeneratorService.dowloadFile(this.htmlGenerated);
       });
   }
 

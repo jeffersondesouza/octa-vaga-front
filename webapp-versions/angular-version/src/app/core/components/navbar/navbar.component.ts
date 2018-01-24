@@ -22,4 +22,9 @@ export class NavbarComponent implements OnInit {
   onShowGeneratedHtml() {
     this.htmlGeneratorService.notifyShowCodeModal();
   }
+
+  onDownloadGeneratedHtml() {
+    this.htmlGeneratorService.notifyDownloadGeneratedHtml();
+  }
+
 }

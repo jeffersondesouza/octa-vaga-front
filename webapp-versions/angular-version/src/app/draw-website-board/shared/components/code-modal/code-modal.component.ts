@@ -22,7 +22,6 @@ export class CodeModalComponent implements OnInit {
 
   show(code) {
     this.parseToHtml(code);
-
     this.showModal = true;
   }
 
