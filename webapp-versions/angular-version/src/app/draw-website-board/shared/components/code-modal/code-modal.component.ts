@@ -25,8 +25,20 @@ export class CodeModalComponent implements OnInit {
     this.showModal = true;
   }
 
-  parseToHtml(code) {
-    this.code = code;
+  parseToHtml(code: string) {
+    code = code.replace(/\r?\n|\r/g, '');
+    code = code.replace(/_ngcontent-[a-z][0-9]=""/g, '');
+    code = code.replace(/ng-reflect-app-drop-target="\[object Object\]"/g, '');
+    code = code.replace(/draggable="\[object Object\]"/g, '');
+    code = code.replace(/draggable="\[object Object\]"/g, '');
+    code = code.replace(/<app-page-element-edit-menu.*<\/app-page-element-edit-menu>/, '');
+    code = code.replace(/<!--.*-->/g, '');
+
+
+    this.code = document.createElement('div');
+
+    this.code.innerHTML = code;
+    console.log(this.code)
   }
 
 }

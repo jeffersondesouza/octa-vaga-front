@@ -22,8 +22,6 @@ export class DropzoneComponent {
     private htmlGeneratorService: HtmlGeneratorService
   ) { }
 
-
-
   onDragStart(event) {
 
   }
