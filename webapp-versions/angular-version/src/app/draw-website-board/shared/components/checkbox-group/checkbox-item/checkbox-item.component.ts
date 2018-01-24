@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-checkbox-item',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckboxItemComponent implements OnInit {
 
+  @Input() label = 'Option';
+  type = 'checkbox';
+  isEditingLabel = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onEditLabel(input) {
+    this.isEditingLabel = true;
+  }
+
+  onEditLabelDone() {
+    this.isEditingLabel = false;
   }
 
 }

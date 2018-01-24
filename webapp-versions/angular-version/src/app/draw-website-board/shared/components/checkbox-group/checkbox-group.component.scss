@@ -1,7 +1,16 @@
-.checkbox-group__label{
-  display: block;
-}
+@import '../../../../../assets/styles/colors.scss';
 
-.checkbox-group__check{
-
+.checkbox-group {
+    &:hover{
+        cursor: pointer;
+    }
+    &__label {
+        display: block;
+    }
+    &__check {}
+    &__btn-add-more {
+        font-size: 0.8em;
+        color:$main-font-color;
+        text-decoration: underline;
+    }
 }

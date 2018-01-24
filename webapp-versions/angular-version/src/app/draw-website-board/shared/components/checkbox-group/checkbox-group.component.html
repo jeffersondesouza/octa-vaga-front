@@ -1,5 +1,5 @@
-<div (click)="onClick($event)" id="checkbox" 
-  [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}" data-type="checkbox-group"
+<div (click)="onClick($event)" title="Click to edit" id="checkbox" 
+  [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}"
   class="checkbox-group draggable"
     [style.fontSize]="fontSize+'px'"
     [style.backgroundColor]="bgColor"
@@ -9,30 +9,31 @@
 
   <h4 class="input-label-group__label">{{label || 'Checkbox'}}</h4>
   <ul>
-    <li><app-checkbox-item></app-checkbox-item></li>
+    <li *ngFor="let chekboxItem of chekboxItems; trackBy:trackByChekboxItemId">
+      <app-checkbox-item [label]="chekboxItem"></app-checkbox-item>
+    </li>
   </ul>
+  <button class="btn checkbox-group__btn-add-more" (click)="onAddCheckboxItem()">Add More</button>
 
-  <label class="checkbox-group__label">
-    <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
-    <button class="item-edit-menu">X</button>
-  </label>
-  <label class="checkbox-group__label">
-    <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 3
-    <button class="item-edit-menu">X</button>
-  </label>
-
-  <app-page-element-edit-menu *ngIf="showEditMenu" [deleteButtonPosition]="{'top':'-73px','left':'150px'}"></app-page-element-edit-menu>
-
-  <app-page-element-editor
-    *ngIf="!showEditMenu"
-    (hide)="onHideEditModal()"
-    [showModalMenu]="showEditMenu" 
-    [(label)]="label"
-    [(fontSize)]="fontSize"
-    [(bgColor)]="bgColor"
-    [(fgColor)]="fgColor"
-    [(width)]="width"
-    [(height)]="height">
-  </app-page-element-editor>
+  <section class="edition-elements">
+    <!-- showOptionsMenu && !showEditMenu -->
+    <app-page-element-edit-menu 
+      [showOptionsMenu]="true"  
+      [deleteButtonPosition]="{'top':'-120px','left':'160px'}"
+      (editMenuOpen)="onEditMenuOpen($event)">
+    </app-page-element-edit-menu>
+    
+    <app-page-element-editor
+      *ngIf="showEditMenu"
+      (hide)="onHideEditModal()"
+      [showModalMenu]="showEditMenu" 
+      [(label)]="label"
+      [(fontSize)]="fontSize"
+      [(bgColor)]="bgColor"
+      [(fgColor)]="fgColor"
+      [(width)]="width"
+      [(height)]="height">
+    </app-page-element-editor>
+  </section>
 
 </div>

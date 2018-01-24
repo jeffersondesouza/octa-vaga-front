@@ -11,6 +11,9 @@ export class CheckboxGroupComponent implements OnInit, PageElement {
 
 
   showEditMenu = false;
+  showOptionsMenu = false;
+
+  chekboxItems = ['Option 1', 'Option 2', 'Option 3'];
   label;
   fontSize;
   bgColor;
@@ -26,7 +29,17 @@ export class CheckboxGroupComponent implements OnInit, PageElement {
   }
 
   onClick(event) {
-    this.showEditMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showEditMenu);
+    this.showOptionsMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showOptionsMenu);
+  }
+
+  onAddCheckboxItem() {
+    const newItem = `Option ${this.chekboxItems.length + 1}`;
+    /* Imutable array version */
+    this.chekboxItems = [...this.chekboxItems, newItem];
+  }
+
+  trackByChekboxItemId(index, item) {
+    return item.id || index;
   }
 
 }
