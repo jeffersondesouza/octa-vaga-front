@@ -6,10 +6,10 @@
   <input #input [autofocus]="true" [(ngModel)]="label" *ngIf="isEditingLabel" 
     (focusout)="onEditLabelDone()" (keyup.enter)="onEditLabelDone()" type="text" class="checkbox-item__change-label">
    
-  <button class="btn checkbox-item__edit" (click)="onEditLabel(input)">
+  <button *ngIf="!isEditingLabel" class="btn checkbox-item__edit" (click)="onEditLabel(input)">
     <i class="icon icon-pencil"></i>
   </button>
-  <button class="btn checkbox-item__close">
+  <button *ngIf="!isEditingLabel" class="btn checkbox-item__close">
       <i class="icon icon-cancel-circled"></i>
     </button>
   

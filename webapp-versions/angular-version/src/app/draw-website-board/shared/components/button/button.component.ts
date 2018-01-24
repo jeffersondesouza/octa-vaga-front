@@ -13,6 +13,8 @@ export class ButtonComponent implements OnInit, PageElement {
 
 
   showOptionsMenu = false;
+  elementsLives = true;
+
   showEditMenu = false;
   label = 'OK';
   fontSize = 16;
@@ -31,6 +33,11 @@ export class ButtonComponent implements OnInit, PageElement {
   onClick(event) {
     this.showOptionsMenu = this.showEditMenuStatusService.checkIfInDropzoneArea(event.target.offsetParent, this.showOptionsMenu);
   }
+
+  onElementDestroyed() {
+    this.elementsLives = false;
+  }
+
 
   onEditMenuOpen(openMenu) {
     this.showEditMenu = openMenu;

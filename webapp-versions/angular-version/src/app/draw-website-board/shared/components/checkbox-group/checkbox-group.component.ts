@@ -12,6 +12,7 @@ export class CheckboxGroupComponent implements OnInit, PageElement {
 
   showEditMenu = false;
   showOptionsMenu = false;
+  elementsLives = true;
 
   chekboxItems = ['Option 1', 'Option 2', 'Option 3'];
   label;
@@ -38,8 +39,20 @@ export class CheckboxGroupComponent implements OnInit, PageElement {
     this.chekboxItems = [...this.chekboxItems, newItem];
   }
 
+  onElementDestroyed() {
+    this.elementsLives = false;
+  }
+
+  onHideEditModal() {
+    this.showEditMenu = false;
+  }
+
   trackByChekboxItemId(index, item) {
     return item.id || index;
   }
 
+
+  onEditMenuOpen(openMenu) {
+    this.showEditMenu = openMenu;
+  }
 }

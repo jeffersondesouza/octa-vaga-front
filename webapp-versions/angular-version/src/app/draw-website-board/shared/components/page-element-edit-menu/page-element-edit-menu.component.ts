@@ -12,6 +12,7 @@ export class PageElementEditMenuComponent implements OnInit {
   @Input() parent;
 
   @Output() editMenuOpen: EventEmitter<boolean> = new EventEmitter();
+  @Output() elementDestroyed: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     private renderer: Renderer2
@@ -33,14 +34,11 @@ export class PageElementEditMenuComponent implements OnInit {
       if (event.target.id === 'dropzone') {
         this.showOptionsMenu = false;
       }
-
-      /* if (event.target['id'] === this.triggerFilterCriteriasId) {
-        this.toogleHideCriterias();
-      } else {
-        this.isHidingCriterias = true;
-      }
-       */
     });
+  }
+
+  onDestroyElement() {
+    this.elementDestroyed.emit(true);
   }
 
 

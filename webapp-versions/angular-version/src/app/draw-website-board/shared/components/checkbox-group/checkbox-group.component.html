@@ -1,4 +1,4 @@
-<div (click)="onClick($event)" title="Click to edit" id="checkbox" 
+<div *ngIf="elementsLives" (click)="onClick($event)" title="Click to edit" id="checkbox" 
   [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}"
   class="checkbox-group draggable"
     [style.fontSize]="fontSize+'px'"
@@ -16,11 +16,11 @@
   <button class="btn checkbox-group__btn-add-more" (click)="onAddCheckboxItem()">Add More</button>
 
   <section class="edition-elements">
-    <!-- showOptionsMenu && !showEditMenu -->
     <app-page-element-edit-menu 
-      [showOptionsMenu]="true"  
+      [showOptionsMenu]="showOptionsMenu && !showEditMenu"  
       [deleteButtonPosition]="{'top':'-120px','left':'160px'}"
-      (editMenuOpen)="onEditMenuOpen($event)">
+      (editMenuOpen)="onEditMenuOpen($event)"
+      (elementDestroyed)="onElementDestroyed()">
     </app-page-element-edit-menu>
     
     <app-page-element-editor
