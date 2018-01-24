@@ -12,8 +12,7 @@ export class InputComponent implements OnInit, PageElement {
   showEditMenu = false;
   showOptionsMenu;
 
-
-  label = 'OK';
+  label = 'Input';
   fontSize = 16;
   bgColor;
   fgColor;

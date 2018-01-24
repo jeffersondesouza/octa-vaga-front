@@ -1,10 +1,17 @@
-<div (click)="onClick($event)" id="checkbox" [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}" data-type="checkbox-group"
-  class="checkbox-group draggable">
-  <h4 class="input-label-group__label">Checkbox</h4>
-  <label class="checkbox-group__label">
-    <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
-    <button class="item-edit-menu">X</button>
-  </label>
+<div (click)="onClick($event)" id="checkbox" 
+  [appDraggable]="{zone:'dropzone', draggdedElementId:'checkbox'}" data-type="checkbox-group"
+  class="checkbox-group draggable"
+    [style.fontSize]="fontSize+'px'"
+    [style.backgroundColor]="bgColor"
+    [style.color]="fgColor"
+    [style.width]="width+'px'"
+    [style.height]="height+'px'">
+
+  <h4 class="input-label-group__label">{{label || 'Checkbox'}}</h4>
+  <ul>
+    <li><app-checkbox-item></app-checkbox-item></li>
+  </ul>
+
   <label class="checkbox-group__label">
     <input type="checkbox" class="checkbox-group__check" id="checkbox-group__check"> Option 1
     <button class="item-edit-menu">X</button>
@@ -15,5 +22,17 @@
   </label>
 
   <app-page-element-edit-menu *ngIf="showEditMenu" [deleteButtonPosition]="{'top':'-73px','left':'150px'}"></app-page-element-edit-menu>
+
+  <app-page-element-editor
+    *ngIf="!showEditMenu"
+    (hide)="onHideEditModal()"
+    [showModalMenu]="showEditMenu" 
+    [(label)]="label"
+    [(fontSize)]="fontSize"
+    [(bgColor)]="bgColor"
+    [(fgColor)]="fgColor"
+    [(width)]="width"
+    [(height)]="height">
+  </app-page-element-editor>
 
 </div>

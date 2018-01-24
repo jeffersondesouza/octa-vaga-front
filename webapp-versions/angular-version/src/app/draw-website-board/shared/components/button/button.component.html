@@ -4,7 +4,7 @@
   [draggable]="!showEditMenu"
   >
   <button id="button-group-button"  
-    class="button-group__button btn btn--primary "
+    class="button-group__button btn btn--primary"
     [style.fontSize]="fontSize+'px'"
     [style.backgroundColor]="bgColor"
     [style.color]="fgColor"
@@ -17,7 +17,7 @@
     (editMenuOpen)="onEditMenuOpen($event)">
   </app-page-element-edit-menu>
  
-  <app-button-edit-modal
+  <app-page-element-editor
     *ngIf="showEditMenu"
     (hide)="onHideEditModal()"
     [showModalMenu]="showEditMenu" 
@@ -27,7 +27,7 @@
     [(fgColor)]="fgColor"
     [(width)]="width"
     [(height)]="height">
-  </app-button-edit-modal>
+  </app-page-element-editor>
 </div>
 
 

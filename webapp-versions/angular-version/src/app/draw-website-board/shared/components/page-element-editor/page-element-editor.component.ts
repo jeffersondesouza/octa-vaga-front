@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, Renderer2, EventEmitter } from '@angular/core';
+import { Component, OnInit, Renderer2, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-button-edit-modal',
-  templateUrl: './button-edit-modal.component.html',
-  styleUrls: ['./button-edit-modal.component.scss']
+  selector: 'app-page-element-editor',
+  templateUrl: './page-element-editor.component.html',
+  styleUrls: ['./page-element-editor.component.scss']
 })
-export class ButtonEditModalComponent implements OnInit {
+export class PageElementEditorComponent implements OnInit {
 
 
 
@@ -66,6 +66,5 @@ export class ButtonEditModalComponent implements OnInit {
   show() {
     this.showModalMenu = true;
   }
-
 
 }

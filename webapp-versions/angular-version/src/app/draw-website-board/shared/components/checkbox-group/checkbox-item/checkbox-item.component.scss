@@ -1,0 +1,21 @@
+.checkbox-item {
+    &__edit,
+    &__close {
+        border: none;
+        font-size: 1em;
+        color: #666;
+        padding: 0;
+        font-weight: bold;
+    };
+    &__edit {
+        margin-left: 1.5rem;
+    };
+    &__close {
+        margin-left: .5rem;
+    }
+    .icon-cancel-circled {
+        &:hover {
+            color: red;
+        }
+    }
+}

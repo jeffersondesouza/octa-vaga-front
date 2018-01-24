@@ -8,6 +8,8 @@ import { ButtonComponent, InputComponent, CheckboxGroupComponent, PageElementEdi
 import { ButtonEditModalComponent } from './components/button-edit-modal/button-edit-modal.component';
 import { FormsModule } from '@angular/forms';
 import { InputEditModalComponent } from './components/input-edit-modal/input-edit-modal.component';
+import { PageElementEditorComponent } from './components/page-element-editor/page-element-editor.component';
+import { CheckboxItemComponent } from './components/checkbox-group/checkbox-item/checkbox-item.component';
 
 @NgModule({
   imports: [
@@ -24,6 +26,8 @@ import { InputEditModalComponent } from './components/input-edit-modal/input-edi
     ButtonEditModalComponent,
     CodeModalComponent,
     InputEditModalComponent,
+    PageElementEditorComponent,
+    CheckboxItemComponent,
 
   ],
   exports: [

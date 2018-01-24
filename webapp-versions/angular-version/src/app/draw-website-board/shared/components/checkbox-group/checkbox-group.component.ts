@@ -11,6 +11,12 @@ export class CheckboxGroupComponent implements OnInit, PageElement {
 
 
   showEditMenu = false;
+  label;
+  fontSize;
+  bgColor;
+  fgColor;
+  width;
+  height;
 
   constructor(
     private showEditMenuStatusService: ShowEditElementMenuStatusService
