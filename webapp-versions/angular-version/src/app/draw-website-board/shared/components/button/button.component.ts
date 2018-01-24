@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { PageElement } from '../../index';
 import { ShowEditElementMenuStatusService } from './../../services/show-edit-element-menu-status.service';
-import { ButtonEditModalComponent } from '../button-edit-modal/button-edit-modal.component';
 
 @Component({
   selector: 'app-button',
