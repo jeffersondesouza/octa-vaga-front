@@ -21,13 +21,9 @@ export class HtmlGeneratorService {
     private fileGeneratorService: FileGeneratorService
   ) { }
 
-  fileDownloadUri = new Subject<string>();
-  fileDownload = new Subject<string>();
 
   emmitHtmlCodeChanges(value: string) {
     this.htmlCodeChangesSubject.next(value);
-
-
   }
 
   notifyShowCodeModal() {

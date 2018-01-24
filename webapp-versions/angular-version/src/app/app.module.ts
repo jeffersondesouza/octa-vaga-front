@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core';
 
+import { HighlightJsModule, HighlightJsService } from 'angular2-highlight-js';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,8 +16,9 @@ import { CoreModule } from './core';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    HighlightJsModule,
   ],
-  providers: [],
+  providers: [HighlightJsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

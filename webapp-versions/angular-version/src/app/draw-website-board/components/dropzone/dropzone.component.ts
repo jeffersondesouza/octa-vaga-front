@@ -30,7 +30,6 @@ export class DropzoneComponent {
     return dropElementId === dropZoneId;
   }
 
-
   onDrag(event) {
     this.positionX = event.clientX;
     this.positionY = event.clientY;
@@ -62,6 +61,5 @@ export class DropzoneComponent {
   saveGeneratedHtmlCode() {
     this.htmlGeneratorService.emmitHtmlCodeChanges(document.getElementById('dropzone').outerHTML);
   }
-
 
 }

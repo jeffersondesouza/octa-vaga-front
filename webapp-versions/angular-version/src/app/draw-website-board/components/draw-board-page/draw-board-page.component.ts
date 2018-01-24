@@ -52,7 +52,6 @@ export class DrawBoardPageComponent implements OnInit, OnDestroy {
       });
   }
 
-
   ngOnDestroy() {
     this.htmlGeneratorServiceSub.unsubscribe();
     this.notifyShowCodeModalSub.unsubscribe();
