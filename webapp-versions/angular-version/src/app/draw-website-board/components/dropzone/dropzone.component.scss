@@ -1,20 +1,24 @@
 .dropzone {
-  display: inline-block;
-  height: 88vh;
-  margin: 0;
-  vertical-align: top;
-  width: 69.66%;
-  background: pink;
+    display: inline-block;
+    height: 88vh;
+    margin: 0;
+    vertical-align: top;
+    width: 69.66%;
+    &__explanation {
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
 }
 
-@media(min-width:1024px) {
-  .dropzone {
-      width: 71%;
-  }
+.has-element-over {
+    background-color: #f2f2f2;
 }
 
-@media (min-width:1280px) {
-  .dropzone {
-      width: 72%;
-  }
+@media(min-width:700px) {
+    .dropzone {
+        width: 74%;
+    }
 }

@@ -1,8 +1,14 @@
-<section id="dropzone" class="dropzone" [appDropTarget]="{zone:'dropzone', draggdedElementId:'d1'}"
+<section id="dropzone" class="dropzone" 
+  [appDropTarget]="{zone:'dropzone', draggdedElementId:'d1'}"
   (dragstart)="onDragStart($event)"
   (dragend)="onDragEnd($event)"
   (dragover)="ondragover($event)"
   (drag)="onDrag($event)"
   (drop)="onDrop($event)"
->
+  [ngClass]="{'has-element-over':hasElementOver}">
+
+  <div *ngIf="isHtmlEmpty" class="dropzone__explanation col-sm-12">
+    <h2 class="dropzone__explanation--title">Drag Elements here and Click them to <span>{{'Edit'|uppercase}}</span></h2>
+  </div>
+
 </section>

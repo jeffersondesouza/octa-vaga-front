@@ -43,32 +43,52 @@ export class DropTargetDirective {
   onDrop(event) {
     event.preventDefault();
 
+    if (this.hasDraggedElementDataTransferd(event.dataTransfer)) {
 
-    if (event.dataTransfer.getData('Text')) {
+      const draggdedElementId = this.getDraggedElementId(event.dataTransfer);
+      const draggedElement: HTMLElement = this.createHtmelElement(draggdedElementId);
 
-      const draggdedElementId = JSON.parse(event.dataTransfer.getData('Text'));
-      const draggedElement: HTMLElement = <HTMLElement>document.getElementById(draggdedElementId);
+      const { positionX, positionY } = this.calculateElementPosition(this.elementRef, draggedElement, event);
 
-      this.renderer.setStyle(this.elementRef.nativeElement, 'position', 'relative');
-      this.renderer.setAttribute(draggedElement, 'id', `${Math.random()}`);
-      this.renderer.setStyle(draggedElement, 'position', 'absolute');
+      this.positioningDraggedElement(this.elementRef, draggedElement, positionX, positionY);
 
-      const positionX = this.elementRef.nativeElement.offsetLeft - event.clientX - draggedElement.offsetWidth;
-      const positionY = this.elementRef.nativeElement.offsettop - event.clientY - draggedElement.offsetHeight;
-
-      this.renderer.setStyle(draggedElement, 'left', `${Math.abs(positionX)}px`);
-      this.renderer.setStyle(draggedElement, 'top', `${Math.abs(positionY)}px`);
-
-      this.renderer.appendChild(this.elementRef.nativeElement, draggedElement);
-
-
-      if (!parseFloat(draggdedElementId)) {
+      if (this.isRepositioningDraggedElement(draggdedElementId)) {
         this.dropZoneService.emitCreateNewElement({ elementId: draggdedElementId });
       }
-
     }
-
   }
 
+  hasDraggedElementDataTransferd(dataTransfer): boolean {
+    return dataTransfer.getData('Text');
+  }
+
+  getDraggedElementId(dataTransfer) {
+    return JSON.parse(dataTransfer.getData('Text'));
+  }
+
+  createHtmelElement(draggdedElementId) {
+    return <HTMLElement>document.getElementById(draggdedElementId);
+  }
+
+
+  calculateElementPosition(parentElementRef, draggedElement, event) {
+    const positionX = parentElementRef.nativeElement.offsetLeft - event.clientX - draggedElement.offsetWidth;
+    const positionY = parentElementRef.nativeElement.offsettop - event.clientY - draggedElement.offsetHeight;
+    return { positionX, positionY };
+  }
+
+  positioningDraggedElement(parentElementRef, draggedElement, positionX, positionY) {
+    this.renderer.setStyle(parentElementRef.nativeElement, 'position', 'relative');
+    this.renderer.setAttribute(draggedElement, 'id', `${Math.random()}`);
+    this.renderer.setStyle(draggedElement, 'position', 'absolute');
+    this.renderer.setStyle(draggedElement, 'left', `${Math.abs(positionX)}px`);
+    this.renderer.setStyle(draggedElement, 'top', `${Math.abs(positionY)}px`);
+    this.renderer.appendChild(this.elementRef.nativeElement, draggedElement);
+  }
+
+  isRepositioningDraggedElement(draggdedElementId) {
+    // we repositioning a element form, the id is changed from a string type to float type
+    return !parseFloat(draggdedElementId);
+  }
 
 }

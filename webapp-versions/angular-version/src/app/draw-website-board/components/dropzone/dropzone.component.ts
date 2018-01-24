@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, Renderer2, HostBinding } from '@angular/core';
 
 import { DragService, DropZoneService } from './../../shared';
 import { HtmlGeneratorService } from './../../shared/services/html-generator.service';
@@ -10,6 +10,8 @@ import { HtmlGeneratorService } from './../../shared/services/html-generator.ser
 })
 export class DropzoneComponent {
 
+  hasElementOver = false;
+  isHtmlEmpty = true;
 
   private draggedElement;
   private positionX = 0;
@@ -47,10 +49,19 @@ export class DropzoneComponent {
     this.positionX -= dropzoneElement.offsetLeft;
     this.positionY -= dropzoneElement.offsetTop;
     this.saveGeneratedHtmlCode();
+
+    this.hasElementOver = false;
+    this.isHtmlEmpty = false;
+
   }
+
+
+
 
   ondragover(event) {
     event.preventDefault();
+    this.hasElementOver = true;
+    console.log(event.target)
   }
 
   move(elment, x: number, y: number) {
