@@ -7,7 +7,6 @@ Intalar o CLI
 
     npm install -g @angular/cli
 
-
 Intalar as dependências do npm
 
     npm install
