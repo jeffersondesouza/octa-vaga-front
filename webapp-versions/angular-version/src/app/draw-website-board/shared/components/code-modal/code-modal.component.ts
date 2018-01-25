@@ -13,7 +13,6 @@ export class CodeModalComponent implements OnInit {
   private code;
 
   constructor(
-    private el: ElementRef,
     private sanitizer: Sanitizer,
   ) { }
 
@@ -31,23 +30,17 @@ export class CodeModalComponent implements OnInit {
 
   parseToHtml(code: string) {
     this.code = this.removeAngularCodeStrings(code);
-    const codeDing = document.getElementById('dropzone');
   }
 
   removeAngularCodeStrings(code) {
     code = code.replace(/_ngcontent.*=""/g, '');
-    code = code.replace(/ng-reflect-app-drop-target="\[object Object\]"/g, '');
-    code = code.replace(/draggable="\[object Object\]"/g, '');
-    code = code.replace(/draggable="\[object Object\]"/g, '');
-    code = code.replace(/<app-page-element-edit-menu.*<\/app-page-element-edit-menu>/, '');
+    code = code.replace(/ng-reflect-.*="\[object Object\]"/g, '');
     code = code.replace(/<!--.*\n*/g, '');
-    code = code.replace(/}-->/g, '');
     code = code.replace(/"ng-reflect-ng-if": "false"/g, '');
-    code = code.replace(/<div/g, '\n<div');
-    code = code.replace(/<\/div>/g, '</div>\n');
-    code = code.replace(/<p/g, '\n\n<p');
-    code = code.replace(/<\/p>/g, '</p>\n');
-    code = code.replace(/<\/p>/g, '</section>\n');
+    code = code.replace(/}-->/g, '');
+    code = code.replace(/<app-page-element-edit-menu.*>/g, '');
+    code = code.replace(/<app-page-element-edit-menu\s*>/g, '');
+
     return code;
   }
 

@@ -7,7 +7,7 @@
   (drop)="onDrop($event)"
   [ngClass]="{'has-element-over':hasElementOver}">
 
-  <div *ngIf="isHtmlEmpty || hasElementOver" class="dropzone__explanation col-sm-12">
+  <div *ngIf="isHtmlEmpty" class="dropzone__explanation col-sm-12">
     <h2 class="dropzone__explanation--title">Drag/Drop Elements here and Click them to <span>{{'Edit'|uppercase}}</span></h2>
   </div>
 
