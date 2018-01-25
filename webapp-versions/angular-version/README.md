@@ -1,27 +1,17 @@
-# AngularVersion
+# Teste para candidatos à vaga de desenvolvedor Front-End
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
+O projeto foi desenvolido utilizando o Angular2+, com SASS como pré-processador de CSS e Webpack como ferramenta de automação e build do bundle dos arquivos.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Intalar o CLI
 
-## Code scaffolding
+    npm install -g @angular/cli
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Intalar as dependências do npm
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+    npm install
 
-## Running unit tests
+Subir versão de desenvolvimento
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    ng serve

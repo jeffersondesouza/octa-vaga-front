@@ -11,4 +11,5 @@
 
   OBS: Acredito ser importante salientar que a complexidade em manipular o DOM, e tartamento de estados que esta aplicação exige nos leva ao uso de um framework,  contudo em aplicações de escopo reduzido, o uso do javascript puro enriquecido com ferramentas de automação e build se mostra uma alternativa vaálida, para que se possa reduzir o bundle final a ser enviado ao navegador, diminuindo assim o tempo de carregamento e aumentando consequentemente a satisfação do usuário e conversão da aplicação. 
 
-  [angular-version](angular-version).
+
+Projeto para avaliação [angular-version](angular-version).
