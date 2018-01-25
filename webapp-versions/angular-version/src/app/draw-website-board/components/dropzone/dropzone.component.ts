@@ -55,13 +55,9 @@ export class DropzoneComponent {
 
   }
 
-
-
-
   ondragover(event) {
     event.preventDefault();
     this.hasElementOver = true;
-    console.log(event.target)
   }
 
   move(elment, x: number, y: number) {
